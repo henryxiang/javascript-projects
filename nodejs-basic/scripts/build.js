@@ -3,13 +3,18 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var path = require('path');
+var timestamp = require('./utils').timestamp;
 
 var base = path.join(__dirname, '..');
-var srcDir = path.join(base, 'src');
-var srcFile = srcDir + '/**/*.js';
-var outDir = path.join(base, 'build');
+var srcDir = 'src';
+var srcFile = '/**/*.js';
+var outDir = 'build';
 var presets = ['es2015', 'stage-0'];
 
-gulp.src(srcFile)
+console.log(timestamp(), "Compiling source files: '" + srcDir + srcFile + "'");
+
+gulp.src(path.join(base, srcDir)+srcFile)
     .pipe(babel({presets: presets}))
-    .pipe(gulp.dest(outDir));
+    .pipe(gulp.dest(path.join(base, outDir)));
+
+console.log(timestamp(), "Finished compiling. Artifacts created in '" + outDir + "' directory.");

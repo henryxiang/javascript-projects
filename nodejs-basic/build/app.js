@@ -1,12 +1,12 @@
 'use strict';
 
-var _locator = require('./locator');
+var _geoLocator = require('./geo-locator');
 
-var _locator2 = _interopRequireDefault(_locator);
+var _geoLocator2 = _interopRequireDefault(_geoLocator);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var locator = new _locator2.default();
+var locator = new _geoLocator2.default();
 
 locator.getMyLocation().then(function (response) {
     return response.json();

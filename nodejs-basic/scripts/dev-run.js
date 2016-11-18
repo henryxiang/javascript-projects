@@ -3,14 +3,10 @@
 var path = require('path');
 var base = path.join(__dirname, '..');
 var nodemon = require('nodemon');
+var timestamp = require('./utils').timestamp;
 
 var srcDir = path.join(base, 'src');
 var indexJs = path.join(base, 'index.js');
-
-function timestamp() {
-  var ts = new Date().toISOString();
-  return "[" + ts + "]";
-}
 
 nodemon({
   verbose: false,
@@ -20,12 +16,12 @@ nodemon({
 
 nodemon
   .on('start', function () {
-    console.log(timestamp(), 'App running (Ctrl+C to quit)\n');
+    console.log(timestamp(), 'Starting app (Ctrl+C to quit)\n');
   })
   .on('quit', function () {
-    console.log(timestamp(), 'App exiting');
+    console.log(timestamp(), 'Exiting app');
     process.exit();
   })
-  .on('restart', function (files) {
-    console.log(timestamp(), 'Rerunning app due to changes: ', files, '\n');
+  .on('restart', function (file) {
+    console.log(timestamp(), 'File modified:\n', file, '\n');
   });

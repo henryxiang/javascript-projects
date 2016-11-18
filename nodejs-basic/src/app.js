@@ -1,6 +1,6 @@
-import Locator from './locator'
+import GeoLocator from './geo-locator'
 
-const locator = new Locator()
+const locator = new GeoLocator()
 
 locator
   .getMyLocation()
