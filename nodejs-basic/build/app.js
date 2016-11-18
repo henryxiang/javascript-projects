@@ -9,7 +9,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var locator = new _geoLocator2.default();
 
 locator.getMyLocation().then(function (response) {
-    return response.json();
+  return response.json();
 }).then(function (json) {
-    locator.showData(json);
+  return locator.showData(json);
 });
