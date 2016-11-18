@@ -12,11 +12,11 @@ class Locator {
   }
 
   getMyLocation() {
-    return fetch(this.api)
+    return fetch(this.api) //return a Promise object
   }
 
   getLocationFromIp(ip) {
-    return fetch(this.api + ip)
+    return fetch(this.api + ip) //return a Promise object
   }
 
   showData(data) {

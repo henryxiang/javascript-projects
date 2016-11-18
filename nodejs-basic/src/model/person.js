@@ -3,8 +3,8 @@ class Person {
     this.name = name
   }
 
-  intro() {
-    console.log(`This is ${this.name}`)
+  sayHi() {
+    console.log(`Hi, my name is ${this.name}.`)
   }
 }
 

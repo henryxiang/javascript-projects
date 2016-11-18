@@ -1,14 +1,14 @@
 ## Node.js with ES6
 
-It is possible to load and run ES6 modules with plain old node.js using babel-register NPM module.
+A template JavaScript project demonstrating to load and run ES6 modules with node.js using 'babel-register' module.
 
 ### Project structure
 
-* index.js - ES6 module loader to load and run ES6 modules
+* index.js - The startup script to bootstrap the application from an ES6 entry point
 * src/app.js - The default application entry point, which is configurable with 'NODE_APP_ENTRY' environment variable
-* src/ - Source file directory
-* build/ - The output directory for transpiled JavaScripts
-* scripts/ - The directory for npm run scripts
+* src/ - The source directory which contains source files written in ES6 or plain old JavaScript
+* build/ - The output directory for JavaScripts that are transpiled by Babel
+* scripts/ - The directory that stores npm run scripts (written in pure JavaScript)
 
 
 ### Install node module dependencies

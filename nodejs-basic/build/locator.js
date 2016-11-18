@@ -28,12 +28,12 @@ var Locator = function () {
   _createClass(Locator, [{
     key: 'getMyLocation',
     value: function getMyLocation() {
-      return (0, _nodeFetch2.default)(this.api);
+      return (0, _nodeFetch2.default)(this.api); //return a Promise object
     }
   }, {
     key: 'getLocationFromIp',
     value: function getLocationFromIp(ip) {
-      return (0, _nodeFetch2.default)(this.api + ip);
+      return (0, _nodeFetch2.default)(this.api + ip); //return a Promise object
     }
   }, {
     key: 'showData',

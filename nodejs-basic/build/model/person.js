@@ -16,9 +16,9 @@ var Person = function () {
   }
 
   _createClass(Person, [{
-    key: "intro",
-    value: function intro() {
-      console.log("This is " + this.name);
+    key: "sayHi",
+    value: function sayHi() {
+      console.log("Hi, my name is " + this.name + ".");
     }
   }]);
 
