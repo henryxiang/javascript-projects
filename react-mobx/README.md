@@ -13,6 +13,6 @@
 
 
 ### Mobx Unidirectional Flow
-*Image courtesy of Mobx Github repo*
+*(Image courtesy of Mobx Github repo)*
 
 ![mobx-flow](mobx-flow.png)
