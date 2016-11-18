@@ -1,6 +1,6 @@
 ## Node.js with ES6
 
-A template JavaScript project demonstrating to load and run ES6 modules with node.js using 'babel-register' module.
+A JavaScript project template demonstrating how to load and run ES6 modules with node.js using 'babel-register' module.
 
 ### Project structure
 
