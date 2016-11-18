@@ -3,10 +3,7 @@ import Counter from './counter'
 
 class CounterList {
   @observable counters = []
-
-  constructor() {
-    this.counterId = 1
-  }
+  counterId = 1
 
   @action addCounter() {
     const counter = new Counter(this.counterId++)
