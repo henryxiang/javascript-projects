@@ -15,7 +15,7 @@ class CounterList {
   }
 
   @computed get totalCount() {
-    return this.counters.reduce((total, counter) => total+counter.count, 0)
+    return this.counters.reduce((total, counter) => total + counter.count, 0)
   }
 
   @computed get numberOfCounters() {
