@@ -29,7 +29,7 @@ const defaultStyles = {
           /* Function that generates values derived from observables */
           // counterList.getSortedCounters("desc").map(counter => {
             return (
-              <div key={counter.id}>
+              <div key={counter._id}>
                 <CounterView counter={counter} />
                 <Button bsStyle="danger" bsSize="xs"
                         /* Action: counterList.removeCounter() */

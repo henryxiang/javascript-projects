@@ -1,11 +1,12 @@
 import {observable, action} from 'mobx'
+import uniqueId from 'lodash/uniqueId'
 
 class Counter {
   @observable count = 0
 
-  constructor(id) {
+  constructor() {
     this.count = 0
-    this.id = id
+    this._id = uniqueId()
   }
 
   @action increment() {

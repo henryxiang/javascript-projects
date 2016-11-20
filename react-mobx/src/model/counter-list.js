@@ -3,15 +3,14 @@ import Counter from './counter'
 
 class CounterList {
   @observable counters = []  // a list containing Counter objects
-  counterId = 1
 
   @action addCounter() {
-    const counter = new Counter(this.counterId++)
+    const counter = new Counter()
     this.counters.push(counter)
   }
 
   @action removeCounter(counter) {
-    this.counters = this.counters.filter(c => c.id !== counter.id)
+    this.counters = this.counters.filter(c => c._id !== counter._id)
   }
 
   @computed get totalCount() {
