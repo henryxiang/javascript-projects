@@ -2,11 +2,11 @@ import {observable, action, computed} from 'mobx'
 import Counter from './counter'
 
 class CounterList {
-  @observable counters = []  // a list containing Counter objects
+  /* a list containing Counter objects */
+  @observable counters = []
 
   @action addCounter() {
-    const counter = new Counter()
-    this.counters.push(counter)
+    this.counters.push(new Counter())
   }
 
   @action removeCounter(counter) {
