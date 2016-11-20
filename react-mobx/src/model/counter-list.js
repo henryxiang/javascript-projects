@@ -2,7 +2,7 @@ import {observable, action, computed} from 'mobx'
 import Counter from './counter'
 
 class CounterList {
-  @observable counters = []
+  @observable counters = []  // a list containing Counter objects
   counterId = 1
 
   @action addCounter() {
@@ -22,6 +22,10 @@ class CounterList {
     return this.counters.length
   }
 
+  /*
+   * If an observer uses this function, it will be automatically called whenever
+   * the observable 'counters' changes.
+   */
   getSortedCounters(order="desc") {
     const m = order === "desc" ? -1 : 1
     return this.counters.sort((a,b) => a.count >= b.count ? 1*m : -1*m)
