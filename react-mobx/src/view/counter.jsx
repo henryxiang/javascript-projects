@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import {observer} from 'mobx-react'
-import Button from 'react-bootstrap/lib/Button'
+import Badge from 'react-bootstrap/lib/Badge'
 
-const defalutStyle = {
-  display: 'inline-block',
-  width: '100px'
+const defalutStyles = {
+  counter: {
+    display: 'inline-block',
+    width: '50px',
+    margin: '5px'
+  }
 }
 
 @observer class CounterView extends Component {
   render() {
-    // pass in backing model object via 'counter' props
-    const {counter, style=defalutStyle} = this.props
+    /* pass in backing model object via 'counter' props */
+    const {counter, styles=defalutStyles} = this.props
     return (
-      <Button bsStyle="default" style={style}
-              onClick={(event) => {counter.increment()}}
+      <Badge  style={styles.counter}
+              /* Actions: counter.increment() and counter.reset() */
+              onClick={(event) => {event.preventDefault(); counter.increment()}}
               onContextMenu={(event) => {event.preventDefault(); counter.reset()}}>
+        {/* Obsersvable: counter.count */}
         {counter.count}
-      </Button>
+      </Badge>
     )
   }
 }
