@@ -9,12 +9,13 @@ const defalutStyle = {
 
 @observer class CounterView extends Component {
   render() {
-    const {model, style=defalutStyle} = this.props
+    // pass in backing model object via 'counter' props
+    const {counter, style=defalutStyle} = this.props
     return (
       <Button bsStyle="default" style={style}
-              onClick={(event) => {model.increment()}}
-              onContextMenu={(event) => {event.preventDefault(); model.reset()}}>
-        {model.count}
+              onClick={(event) => {counter.increment()}}
+              onContextMenu={(event) => {event.preventDefault(); counter.reset()}}>
+        {counter.count}
       </Button>
     )
   }

@@ -19,7 +19,12 @@ class CounterList {
   }
 
   @computed get numberOfCounters() {
-    return this.counters.length;
+    return this.counters.length
+  }
+
+  getSortedCounters(order="desc") {
+    const m = order === "desc" ? -1 : 1
+    return this.counters.sort((a,b) => a.count >= b.count ? 1*m : -1*m)
   }
 }
 

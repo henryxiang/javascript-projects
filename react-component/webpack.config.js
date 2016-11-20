@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var autoprefixer = require('autoprefixer');
+var path = require('path');
 
 module.exports = {
   entry: {
@@ -22,19 +24,25 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
+      // {
+      //   test: /\.css$/,
+      //   // loader: "style-loader!css-loader"
+      //   loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      //   // loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader")
+      // },
       {
-        test: /\.css$/,
-        // loader: "style-loader!css-loader"
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+        test: /(\.scss|\.css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
       },
       {
         test: /\.less$/,
         loader: "style-loader!css-loader!less-loader"
       },
-      {
-        test: /\.scss$/,
-        loader: "style-loader!css-loader!sass-loader"
-      },
+      // {
+      //   test: /\.scss$/,
+      //   //loader: "style-loader!css-loader!sass-loader"
+      //   loaders: ["style", "css", "sass"]
+      // },
       {
         test: /\.gif$/,
         loader: "url-loader?mimetype=image/gif"
@@ -56,9 +64,18 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
-    new ExtractTextPlugin("css/styles.css")
+    new ExtractTextPlugin("css/styles.css", {allChunks: true})
   ],
+  postcss: [autoprefixer],
+  // sassLoader: {
+  //   data: '@import "theme/_config.scss";',
+  //   includePaths: [path.resolve(__dirname, './src/app')]
+  // },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
+    modulesDirectories: [
+      'node_modules',
+      path.resolve(__dirname, './node_modules')
+    ]
   }
 }

@@ -10,6 +10,6 @@ const counterList = new CounterList()
 counterList.addCounter()
 
 ReactDOM.render(
-  <CounterListView model={counterList} />,
+  <CounterListView counterList={counterList} />,
   document.getElementById('app')
 )
