@@ -6,7 +6,8 @@ const defalutStyles = {
   counter: {
     display: 'inline-block',
     width: '50px',
-    margin: '5px'
+    margin: '5px',
+    cursor: 'pointer'
   }
 }
 
