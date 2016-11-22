@@ -13,7 +13,7 @@ class ObservableList {
   }
 
   @action update(item) {
-    this.item = this.items.map(i => {
+    this.items = this.items.map(i => {
       if (i._id === item.id)
         return item
       else

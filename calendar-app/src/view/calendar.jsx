@@ -4,11 +4,19 @@ import React from 'react'
 import {observer} from 'mobx-react'
 import moment from 'moment'
 import uniqueId from 'lodash/uniqueId'
+import sortBy from 'lodash/sortBy'
 import IconButton from 'material-ui/IconButton'
+import FontIcon from 'material-ui/FontIcon'
 import {blue500} from 'material-ui/styles/colors';
 import ScheduleEditorView from './schedule-editor'
 
 @observer class CalendarView extends React.Component {
+
+  iconStyle = {
+    cursor: "pointer",
+    marginLeft: 10,
+    marginRight: 10
+  }
 
   render() {
     const {calendar, scheduleList, editor} = this.props
@@ -20,11 +28,11 @@ import ScheduleEditorView from './schedule-editor'
     return (
       <div className='calendar'>
         <header>
-          <h1>{calendarHeader}</h1>
+          <b>{calendarHeader}</b>
         </header>
-        <IconButton iconClassName="fa fa-caret-left" onClick={(event) => {calendar.changeMonth(-1)}} />
-        <IconButton iconClassName="fa fa-caret-right" onClick={(event) => {calendar.changeMonth(1)}} />
-        <IconButton iconClassName="fa fa-plus" color={blue500} onClick={(event) => {editor.createNewSchedule()}} />
+        <FontIcon className="fa fa-caret-left" style={this.iconStyle} onClick={(event) => {calendar.changeMonth(-1)}} />
+        <FontIcon className="fa fa-caret-right" style={this.iconStyle} onClick={(event) => {calendar.changeMonth(1)}} />
+        <FontIcon className="fa fa-plus" style={this.iconStyle} color={blue500} onClick={(event) => {editor.createNewSchedule()}} />
         <div className="calendar-body">
           {this.renderWeekHeader()}
           {days.map(week => this.renderWeekRow(week))}
@@ -64,7 +72,7 @@ import ScheduleEditorView from './schedule-editor'
   }
 
   renderWeekday(day, type) {
-    const {calendar, scheduleList} = this.props
+    const {calendar, scheduleList, editor} = this.props
     const {year, month} = calendar
     const date = moment(new Date(year, month-1, day))
     const visibleSchedules = scheduleList.getSchedules(date) || []
@@ -74,9 +82,10 @@ import ScheduleEditorView from './schedule-editor'
       liClassName += " " + type
     }
     return (
-      <li key={uniqueId('day_')} className={liClassName}>
+      <li key={uniqueId('day_')} className={liClassName}
+          onContextMenu={(event) => {event.preventDefault(); editor.createNewSchedule(date)}}>
         <div className='date'>{day}</div>
-        {this.renderSchedules(visibleSchedules)}
+        {day ? this.renderSchedules(visibleSchedules) : ''}
       </li>
     )
   }
@@ -84,14 +93,15 @@ import ScheduleEditorView from './schedule-editor'
   renderSchedules(visibleSchedules) {
     const {editor} = this.props
     const charLimit = 40
-    return visibleSchedules.map(schedule => {
+    const schedules = sortBy(visibleSchedules, s => s.startTime.toDate())
+    return schedules.map(schedule => {
       // console.log(schedule)
       const {startTime, description} = schedule
       return (
         <div key={schedule._id} className='event'
-             onClick={(event) => {editor.editSchedule(schedule)}} >
+             onClick={(event) => {event.preventDefault(); editor.editSchedule(schedule)}} >
           <div className="event-desc">
-            {startTime.format("h:mma ")}
+            {startTime.format("h:mmA ")}
             {description.length > charLimit ? description.substring(0, charLimit) + ' ...' : description}
           </div>
         </div>

@@ -1,12 +1,12 @@
 {
-  "name": "react-material-ui",
+  "name": "react-calendar-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server"
   },
-  "author": "",
+  "author": "Henry Xiang",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",

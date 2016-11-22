@@ -17,9 +17,11 @@ class ScheduleEditor {
   }
 
   @action createNewSchedule(date=moment()) {
-    this.schedule = new Schedule()
-    this.schedule.startTime = moment(date)
-    this.isVisible = true
+    if(date.isAfter(moment().subtract(24, 'hours'))) {
+      this.schedule = new Schedule()
+      this.schedule.startTime = moment(date)
+      this.isVisible = true
+    }
   }
 
   @action cancelEditing() {
@@ -33,7 +35,7 @@ class ScheduleEditor {
   }
 
   @action saveTo(scheduleList) {
-    console.log("saveTo ", this.schedule, scheduleList)
+    // console.log("saveTo ", this.schedule, scheduleList)
     if (findIndex(scheduleList, s => s._id === this.schedule._id) >= 0)
       scheduleList.update(this.schedule)
     else

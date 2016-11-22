@@ -6,6 +6,7 @@
 
 .calendar header {
   text-align: center;
+  font-size: 150%;
 }
 
 // .calendar-body {
@@ -39,6 +40,7 @@
 .calendar ul.weekdays {
   height: 40px;
   background: #8e352e;
+  /*position: fixed;*/
 }
 
 .calendar ul.weekdays li {

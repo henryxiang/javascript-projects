@@ -34,17 +34,34 @@ import moment from 'moment'
         onClick={() => {this.props.editor.isVisible = false}}
       />,
       <FlatButton
-        label="Submit"
+        label="Delete"
+        primary={true}
+        onClick={() => {this.deleteSchedule()}}
+      />,
+      <FlatButton
+        label="Save"
         primary={true}
         keyboardFocused={true}
-        onClick={() => {this.props.editor.isVisible = false}}
+        onClick={() => {this.saveSchedule()}}
       />
   ]
 
   styles = {
+    dialog: {
+      width: '400px',
+      align: 'center'
+    },
     dateTime: {
       display: 'inline-block',
-      margin: 5
+      // width: 160,
+      margin: '5px'
+    },
+    selection: {
+      width: '100px'
+    },
+    textInput: {
+      width: '300px',
+      display: 'block'
     }
   }
 
@@ -56,77 +73,82 @@ import moment from 'moment'
     // this.setState({...this.props.editor.schedule})
     // console.log(editor, scheduleList)
     return (
-      <Dialog title='Schedule Editor' actions={this.actions} open={editor.isVisible}>
+      <Dialog title='Schedule Editor' actions={this.actions} open={editor.isVisible} contentStyle={this.styles.dialog}>
 
-          <DatePicker hintText={this.labels.scheduleDate}
-                      floatingLabelText={this.labels.scheduleDate}
-                      style={this.styles.dateTime}
-                      defaultDate={startTime.toDate()} />
-          <TimePicker hintText={this.labels.scheduleTime}
-                      floatingLabelText={this.labels.scheduleTime}
-                      style={this.styles.dateTime}
-                      defaultTime={startTime.toDate()} />
+            <DatePicker hintText={this.labels.scheduleDate}
+                        floatingLabelText={this.labels.scheduleDate}
+                        // style={this.styles.dateTime}
+                        autoOk={true}
+                        defaultDate={startTime.toDate()}
+                        onChange={this.handleDateTimeChange.bind(this, 'scheduleDate')} />
+            <TimePicker hintText={this.labels.scheduleTime}
+                        floatingLabelText={this.labels.scheduleTime}
+                        // style={this.styles.dateTime}
+                        defaultTime={startTime.toDate()}
+                        onChange={this.handleDateTimeChange.bind(this, 'scheduleTime')} />
           <SelectField hintText={this.labels.frequency}
                        floatingLabelText={this.labels.frequency}
+                      //  style={this.styles.dateTime}
                        value={freq}
-                       autoWidth={true}>
+                       autoWidth={true}
+                       onChange={this.handleSelectionChange.bind(this, 'freq')}>
              {
                this.freqType.map(t => <MenuItem key={t.value} value={t.value} primaryText={t.label} />)
              }
           </SelectField>
-          <TextField hintText={this.labels.description}
+          <TextField id="description"
+                     hintText={this.labels.description}
                      floatingLabelText={this.labels.description}
-                    //  multiLine={true} rows={5}
-                     defaultValue={description} />
+                    //  style={this.styles.textInput}
+                     fullWidth={true}
+                     multiLine={true} rows={5}
+                     defaultValue={description}
+                     onChange={this.handleTextInputChange} />
       </Dialog>
     );
   }
 
-  handleDateTimeChange = (name, value) => {
-    // const editSchedule = this.props.editor.schedule
+  handleDateTimeChange = (id, empty, date) => {
+    const editSchedule = this.props.editor.schedule
     // console.log(value, editSchedule)
-    switch(name) {
+    switch(id) {
       case 'scheduleDate':
-        // editSchedule.setScheduleDate(value)
-        this.setScheduleDate(value)
+        editSchedule.setScheduleDate(date)
         break
       case 'scheduleTime':
-        // editSchedule.setScheduleTime(value)
-        this.setScheduleTime(value)
+        editSchedule.setScheduleTime(date)
         break
     }
   }
 
-  setScheduleDate(date) {
-    const newTime = moment(date)
-    const {startTime} = this.state
-    startTime
-      .year(newTime.year())
-      .month(newTime.month())
-      .date(newTime.date())
-    this.setState({...this.state, startTime})
+  handleTextInputChange = (event) => {
+    const {id, value} = event.target
+    const editSchedule = this.props.editor.schedule
+    editSchedule[id] = value
+    // console.log("handleTextInputChange() =>")
+    // console.log(id, value, editSchedule)
   }
 
-  setScheduleTime(time) {
-    const newTime = moment(time)
-    const {startTime} = this.state
-    startTime
-      .hour(newTime.hour())
-      .minute(newTime.minute())
-    this.setState({...this.state, startTime})
-  }
-
-  handleTextInputChange = (name, value) => {
-    // const editSchedule = this.props.editor.schedule
-    // editSchedule[name] = value
-    this.setState({...this.state, [name]: value})
+  handleSelectionChange = (id, proxy, index, value) => {
+    // console.log("handleSelectionChange() =>")
+    // console.log(id, index, value)
+    const editSchedule = this.props.editor.schedule
+    editSchedule[id] = value
   }
 
   saveSchedule() {
+    // console.log("saveSchedule() =>", this.props)
     const {editor, scheduleList} = this.props
-    const {startTime, duration, freq, description} = this.state
-    editor.schedule = {startTime, duration, freq, description}
+    // console.log(editor, scheduleList)
+    // const {startTime, duration, freq, description} = this.state
+    // editor.schedule = {startTime, duration, freq, description}
     editor.saveTo(scheduleList)
+  }
+
+  deleteSchedule() {
+    const {editor, scheduleList} = this.props
+    scheduleList.remove(editor.schedule)
+    editor.cancelEditing()
   }
 }
 

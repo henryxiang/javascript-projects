@@ -3,21 +3,23 @@ import ObservableList from './observable-list'
 import {ScheduleType} from './schedule'
 
 class ScheduleList extends ObservableList {
-  // @observable t = 0
-  getSchedules(date) {
-    // console.log("schedule: ", this.items[0])
-    // console.log("date: ", date.toString())
-    return this.items.filter(schedule => {
-      // console.log("schedule date: ", schedule.startTime.year(), schedule.startTime.month(), schedule.startTime.date())
-      if (schedule.startTime.year() === date.year() &&
-          schedule.startTime.month() === date.month() &&
-          schedule.startTime.date() === date.date()
-      )
-        return schedule
+  @observable key = 0
 
+  getSchedules(date) {
+    console.log("getSchedules() =>")
+    console.log(items, date, date.toString())
+    const schedules = this.items.filter(schedule => {
+      // console.log("schedule date: ", schedule.startTime.year(), schedule.startTime.month(), schedule.startTime.date())
       switch(schedule.freq) {
+        case ScheduleType.once:
+          if (schedule.startTime.year() === date.year() &&
+              schedule.startTime.month() === date.month() &&
+              schedule.startTime.date() === date.date()
+          )
+            return schedule
+          break
         case ScheduleType.daily:
-          if (date.isSameOrAfter(schedule.startTime))
+          if(date.isSameOrAfter(schedule.startTime))
             return schedule
           break
         case ScheduleType.weekly:
@@ -28,12 +30,14 @@ class ScheduleList extends ObservableList {
           break
         case ScheduleType.biweekly:
           if (date.isSameOrAfter(schedule.startTime) &&
-              (date.diff(schedule.startTime, 'days')+1) % 14 === 0)
+              date.diff(schedule.startTime.day(), 'days') % 14 === 0
+          )
             return schedule
           break
         case ScheduleType.monthly:
           if (date.isSameOrAfter(schedule.startTime) &&
-              schedule.startTime.date() === date.date())
+              schedule.startTime.date() === date.date()
+          )
             return schedule
           break
         case ScheduleType.yearly:
@@ -45,6 +49,7 @@ class ScheduleList extends ObservableList {
           break
       }
     })
+    return schedules
   }
 }
 
