@@ -30,7 +30,8 @@ import moment from 'moment'
   labels = {
     scheduleDate: "Schedule Date",
     scheduleTime: "Schedule Time",
-    description: "Description"
+    description: "Description",
+    frequency: "Frequency"
   }
 
   actions = [
@@ -47,10 +48,12 @@ import moment from 'moment'
       />
   ]
 
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {...this.props.editor.schedule}
-  // }
+  styles = {
+    dateTime: {
+      display: 'inline-block',
+      margin: 5
+    }
+  }
 
   render() {
     const {editor, scheduleList} = this.props
@@ -63,24 +66,26 @@ import moment from 'moment'
       <Dialog actions={this.actions}
               open={editor.isVisible}
               title='Schedule Editor'>
-        <DatePicker hintText={this.labels.scheduleDate}
-                    floatingLabelText={this.labels.scheduleDate}
-                    defaultDate={startTime.toDate()} />
-        <TextField hintText={this.labels.description}
-                   floatingLabelText={this.labels.description}
-                   multiLine={true} rows={5}
-                   defaultValue={description} />
-        {/* <DatePicker label="Start Date"
-                    value={startTime.toDate()}
-                    onChange={this.handleDateTimeChange.bind(this, 'scheduleDate')} />
-        <TimePicker label="Start Time"
-                    value={startTime.toDate()}
-                    format="ampm"
-                    onChange={this.handleDateTimeChange.bind(this, 'scheduleTime')} />
-        <Input label="Description"
-               type="text"
-               defaultValue={description}
-               onChnage={this.handleTextInputChange.bind(this, 'description')} /> */}
+          <DatePicker hintText={this.labels.scheduleDate}
+                      floatingLabelText={this.labels.scheduleDate}
+                      style={this.styles.dateTime}
+                      defaultDate={startTime.toDate()} />
+          <TimePicker hintText={this.labels.scheduleTime}
+                      floatingLabelText={this.labels.scheduleTime}
+                      style={this.styles.dateTime}
+                      defaultTime={startTime.toDate()} />
+          <SelectField hintText={this.labels.frequency}
+                       floatingLabelText={this.labels.frequency}
+                       value={freq}
+                       autoWidth={true}>
+             {
+               this.freqType.map(t => <MenuItem key={t.value} value={t.value} primaryText={t.label} />)
+             }
+          </SelectField>
+          <TextField hintText={this.labels.description}
+                     floatingLabelText={this.labels.description}
+                    //  multiLine={true} rows={5}
+                     defaultValue={description} />
       </Dialog>
     );
   }
