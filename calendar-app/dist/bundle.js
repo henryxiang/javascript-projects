@@ -30,13 +30,6 @@ webpackJsonp([0],[
 
 	(0, _reactTapEventPlugin2.default)();
 
-	// const App = () => (
-	//   <MuiThemeProvider>
-	//     <TestApp />
-	//   </MuiThemeProvider>
-	// )
-
-	// import App from './material-ui-app.jsx'
 	_reactDom2.default.render(_react2.default.createElement(
 	  _MuiThemeProvider2.default,
 	  null,
