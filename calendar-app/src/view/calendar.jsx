@@ -6,7 +6,7 @@ import moment from 'moment'
 import uniqueId from 'lodash/uniqueId'
 import sortBy from 'lodash/sortBy'
 import IconButton from 'material-ui/IconButton'
-import FontIcon from 'material-ui/FontIcon'
+import Avatar from 'material-ui/Avatar'
 import {blue500} from 'material-ui/styles/colors';
 import ScheduleEditorView from './schedule-editor'
 
@@ -79,11 +79,14 @@ class CalendarView extends React.Component {
     const {year, month} = calendar
     const date = moment(new Date(year, month-1, day))
     const visibleSchedules = scheduleList.getSchedules(date) || []
+    let dayView = day
+    if (moment().diff(date, 'hours') < 24 && moment().diff(date, 'hours') >= 0)
+      dayView = (<Avatar>{day}</Avatar>)
     // console.debug("Visible Schedules:", date.toString(), visibleSchedules.length)
     return (
       <li key={uniqueId('day_')} className={cssClass}
           onContextMenu={(event) => {event.preventDefault(); editor.createNewSchedule(date)}}>
-        <div className='date'>{day}</div>
+        <div className='date'>{dayView}</div>
         {day ? this.renderSchedules(visibleSchedules) : ''}
       </li>
     )
