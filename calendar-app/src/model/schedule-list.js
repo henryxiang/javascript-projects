@@ -3,45 +3,43 @@ import ObservableList from './observable-list'
 import {ScheduleType} from './schedule'
 
 class ScheduleList extends ObservableList {
-  // @observable t = 0
+  /*
+   * This function returns all schedules on a given date.
+   */
   getSchedules(date) {
-    // console.log("schedule: ", this.items[0])
-    // console.log("date: ", date.toString())
+    // console.debug("schedule: ", this.items[0])
+    // console.debug("date: ", date.toString())
     return this.items.filter(schedule => {
-      // console.log("schedule date: ", schedule.startTime.year(), schedule.startTime.month(), schedule.startTime.date())
+      // console.debug("schedule date: ", schedule.startTime.year(), schedule.startTime.month(), schedule.startTime.date())
       if (schedule.startTime.year() === date.year() &&
           schedule.startTime.month() === date.month() &&
           schedule.startTime.date() === date.date()
-      )
-        return schedule
+      ) return schedule
 
       switch(schedule.freq) {
         case ScheduleType.daily:
-          if (date.isSameOrAfter(schedule.startTime))
-            return schedule
+          if (date.isSameOrAfter(schedule.startTime)) return schedule
           break
         case ScheduleType.weekly:
           if (date.isSameOrAfter(schedule.startTime) &&
               schedule.startTime.day() === date.day()
-          )
-            return schedule
+          ) return schedule
           break
         case ScheduleType.biweekly:
           if (date.isSameOrAfter(schedule.startTime) &&
-              (date.diff(schedule.startTime, 'days')+1) % 14 === 0)
-            return schedule
+             (date.diff(schedule.startTime, 'days')+1) % 14 === 0
+          ) return schedule
           break
         case ScheduleType.monthly:
           if (date.isSameOrAfter(schedule.startTime) &&
-              schedule.startTime.date() === date.date())
-            return schedule
+              schedule.startTime.date() === date.date()
+          ) return schedule
           break
         case ScheduleType.yearly:
           if (date.isSameOrAfter(schedule.startTime) &&
               schedule.startTime.month() === date.month() &&
               schedule.startTime.date() === date.date()
-          )
-            return schedule
+          ) return schedule
           break
       }
     })

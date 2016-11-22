@@ -10,29 +10,32 @@ import FontIcon from 'material-ui/FontIcon'
 import {blue500} from 'material-ui/styles/colors';
 import ScheduleEditorView from './schedule-editor'
 
-@observer class CalendarView extends React.Component {
-
-  iconStyle = {
-    cursor: "pointer",
-    marginLeft: 10,
-    marginRight: 10
-  }
+@observer
+class CalendarView extends React.Component {
 
   render() {
     const {calendar, scheduleList, editor} = this.props
-    const {year, month} = calendar
-    const firstDayOfMonth = moment(new Date(year, month-1, 1))
-    const calendarHeader = firstDayOfMonth.format("YYYY MMMM")
-    const days = this.getAllDaysInMonth(year, month)
+    const year = calendar.year, month = calendar.month
+    const calendarHeader = calendar.calendarTime.format("YYYY MMMM")
+    const days = calendar.allDaysInMonth
 
     return (
       <div className='calendar'>
         <header>
           <b>{calendarHeader}</b>
         </header>
-        <FontIcon className="fa fa-caret-left" style={this.iconStyle} onClick={(event) => {calendar.changeMonth(-1)}} />
-        <FontIcon className="fa fa-caret-right" style={this.iconStyle} onClick={(event) => {calendar.changeMonth(1)}} />
-        <FontIcon className="fa fa-plus" style={this.iconStyle} color={blue500} onClick={(event) => {editor.createNewSchedule()}} />
+        <IconButton iconClassName="fa fa-caret-left"
+                    tooltip="Previous month" tooltipPosition="top-center"
+                    onClick={(event) => {calendar.changeMonth(-1)}} />
+        <IconButton iconClassName="fa fa-caret-right"
+                    tooltip="Next month" tooltipPosition="top-center"
+                    onClick={(event) => {calendar.changeMonth(1)}} />
+        <IconButton iconClassName="fa fa-calendar"
+                    tooltip="Current month" tooltipPosition="top-center"
+                    onClick={(event) => {calendar.resetCalendar()}} />
+        <IconButton iconClassName="fa fa-calendar-plus-o" iconStyle={{color:blue500}}
+                    tooltip="New schedule" tooltipPosition="top-center"
+                    onClick={(event) => {editor.createNewSchedule()}} />
         <div className="calendar-body">
           {this.renderWeekHeader()}
           {days.map(week => this.renderWeekRow(week))}
@@ -62,27 +65,23 @@ import ScheduleEditorView from './schedule-editor'
       {
         days.map(d => {
           if (d)
-            return this.renderWeekday(d)
+            return this.renderWeekday(d, "day")
           else
-            return this.renderWeekday("", "other-month")
+            return this.renderWeekday("", "day other-month")
         })
       }
       </ul>
     )
   }
 
-  renderWeekday(day, type) {
+  renderWeekday(day, cssClass) {
     const {calendar, scheduleList, editor} = this.props
     const {year, month} = calendar
     const date = moment(new Date(year, month-1, day))
     const visibleSchedules = scheduleList.getSchedules(date) || []
-    // console.log("Visible Schedules:", date.toString(), visibleSchedules.length)
-    let liClassName = 'day'
-    if (type) {
-      liClassName += " " + type
-    }
+    // console.debug("Visible Schedules:", date.toString(), visibleSchedules.length)
     return (
-      <li key={uniqueId('day_')} className={liClassName}
+      <li key={uniqueId('day_')} className={cssClass}
           onContextMenu={(event) => {event.preventDefault(); editor.createNewSchedule(date)}}>
         <div className='date'>{day}</div>
         {day ? this.renderSchedules(visibleSchedules) : ''}
@@ -95,7 +94,6 @@ import ScheduleEditorView from './schedule-editor'
     const charLimit = 40
     const schedules = sortBy(visibleSchedules, s => s.startTime.toDate())
     return schedules.map(schedule => {
-      // console.log(schedule)
       const {startTime, description} = schedule
       return (
         <div key={schedule._id} className='event'
@@ -107,23 +105,6 @@ import ScheduleEditorView from './schedule-editor'
         </div>
       )
     })
-  }
-
-  getAllDaysInMonth(year, month) {
-    let days = [],
-        d = moment(new Date(year, month-1, 1)),
-        nw = 0,
-        week = [null, null, null, null, null, null, null]
-    while (d.month() === month-1) {
-      week[d.day()] = d.date()
-      if (d.day() === 6) {
-        days.push(week)
-        week = [null, null, null, null, null, null, null]
-      }
-      d.add(1, 'days')
-    }
-    days.push(week)
-    return days
   }
 
 }

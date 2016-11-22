@@ -10,7 +10,8 @@ import FlatButton from 'material-ui/FlatButton'
 import uniqueId from 'lodash/uniqueId'
 import moment from 'moment'
 
-@observer class ScheduleEditorView extends React.Component {
+@observer
+class ScheduleEditorView extends React.Component {
   freqType = [
     {value: 0, label: 'Once'},
     {value: 1, label: 'Daily'},
@@ -22,7 +23,8 @@ import moment from 'moment'
 
   labels = {
     scheduleDate: "Schedule Date",
-    scheduleTime: "Schedule Time",
+    schedulTime: "Schedule Time",
+    endTime: "End Time",
     description: "Description",
     frequency: "Frequency"
   }
@@ -68,24 +70,29 @@ import moment from 'moment'
   render() {
     const {editor, scheduleList} = this.props
     const schedule = editor.schedule
-    const {startTime, duration, description, freq} = this.props.editor.schedule
+    const {startTime, endTime, description, freq} = this.props.editor.schedule
     // const {startTime, duration, description, freq} = this.state
     // this.setState({...this.props.editor.schedule})
-    // console.log(editor, scheduleList)
+    // console.debug(editor, scheduleList)
     return (
       <Dialog title='Schedule Editor' actions={this.actions} open={editor.isVisible} contentStyle={this.styles.dialog}>
 
-            <DatePicker hintText={this.labels.scheduleDate}
-                        floatingLabelText={this.labels.scheduleDate}
-                        // style={this.styles.dateTime}
-                        autoOk={true}
-                        defaultDate={startTime.toDate()}
-                        onChange={this.handleDateTimeChange.bind(this, 'scheduleDate')} />
-            <TimePicker hintText={this.labels.scheduleTime}
-                        floatingLabelText={this.labels.scheduleTime}
-                        // style={this.styles.dateTime}
-                        defaultTime={startTime.toDate()}
-                        onChange={this.handleDateTimeChange.bind(this, 'scheduleTime')} />
+          <DatePicker hintText={this.labels.scheduleDate}
+                      floatingLabelText={this.labels.scheduleDate}
+                      // style={this.styles.dateTime}
+                      autoOk={true}
+                      defaultDate={startTime.toDate()}
+                      onChange={this.handleDateTimeChange.bind(this, 'scheduleDate')} />
+          <TimePicker hintText={this.labels.scheduleTime}
+                      floatingLabelText={this.labels.scheduleTime}
+                      // style={this.styles.dateTime}
+                      defaultTime={startTime.toDate()}
+                      onChange={this.handleDateTimeChange.bind(this, 'scheduleTime')} />
+          <TimePicker hintText={this.labels.endTime}
+                      floatingLabelText={this.labels.endTime}
+                      // style={this.styles.dateTime}
+                      defaultTime={endTime.toDate()}
+                      onChange={this.handleDateTimeChange.bind(this, 'endTime')} />
           <SelectField hintText={this.labels.frequency}
                        floatingLabelText={this.labels.frequency}
                       //  style={this.styles.dateTime}
@@ -110,13 +117,16 @@ import moment from 'moment'
 
   handleDateTimeChange = (id, empty, date) => {
     const editSchedule = this.props.editor.schedule
-    // console.log(value, editSchedule)
+    // console.debug(value, editSchedule)
     switch(id) {
       case 'scheduleDate':
         editSchedule.setScheduleDate(date)
         break
       case 'scheduleTime':
         editSchedule.setScheduleTime(date)
+        break
+      case 'endTime':
+        editSchedule.setEndTime(date)
         break
     }
   }
@@ -125,21 +135,21 @@ import moment from 'moment'
     const {id, value} = event.target
     const editSchedule = this.props.editor.schedule
     editSchedule[id] = value
-    // console.log("handleTextInputChange() =>")
-    // console.log(id, value, editSchedule)
+    // console.debug("handleTextInputChange() =>")
+    // console.debug(id, value, editSchedule)
   }
 
   handleSelectionChange = (id, proxy, index, value) => {
-    // console.log("handleSelectionChange() =>")
-    // console.log(id, index, value)
+    // console.debug("handleSelectionChange() =>")
+    // console.debug(id, index, value)
     const editSchedule = this.props.editor.schedule
     editSchedule[id] = value
   }
 
   saveSchedule() {
-    // console.log("saveSchedule() =>", this.props)
+    // console.debug("saveSchedule() =>", this.props)
     const {editor, scheduleList} = this.props
-    // console.log(editor, scheduleList)
+    // console.debug(editor, scheduleList)
     // const {startTime, duration, freq, description} = this.state
     // editor.schedule = {startTime, duration, freq, description}
     editor.saveTo(scheduleList)
