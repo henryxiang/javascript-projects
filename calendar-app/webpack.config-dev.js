@@ -4,7 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     bundle: './src/main.js',
-    vendors: ['react', 'react-dom', 'mobx', 'mobx-react']
+    vendors: ['react', 'react-dom', 'mobx', 'mobx-react', 'material-ui', 'lodash']
   },
   output: {
     path: './dist',
@@ -54,7 +54,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({minimize: true}),
+    // new webpack.optimize.UglifyJsPlugin({minimize: true}),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
     new ExtractTextPlugin("css/styles.css")
   ],

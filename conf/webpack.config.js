@@ -3,7 +3,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
-    bundle: './src/main.jsx',
+    bundle: './src/main.js',
     vendors: ['react', 'react-dom', 'mobx', 'mobx-react']
   },
   output: {
