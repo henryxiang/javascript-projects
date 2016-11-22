@@ -6,7 +6,7 @@ import moment from 'moment'
 import uniqueId from 'lodash/uniqueId'
 import IconButton from 'material-ui/IconButton'
 import {blue500} from 'material-ui/styles/colors';
-import ScheduleEditor from './schedule-editor'
+import ScheduleEditorView from './schedule-editor'
 
 @observer class CalendarView extends React.Component {
 
@@ -29,7 +29,7 @@ import ScheduleEditor from './schedule-editor'
           {this.renderWeekHeader()}
           {days.map(week => this.renderWeekRow(week))}
         </div>
-        <ScheduleEditor editor={editor} scheduleList={scheduleList} />
+        <ScheduleEditorView editor={editor} scheduleList={scheduleList} />
       </div>
     )
   }

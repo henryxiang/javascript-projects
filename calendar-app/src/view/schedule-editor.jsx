@@ -1,11 +1,5 @@
 import React from 'react';
 import {observer} from 'mobx-react'
-
-// import Dialog from 'react-toolbox/lib/dialog'
-// import Input from 'react-toolbox/lib/input'
-// import Dropdown from 'react-toolbox/lib/dropdown'
-// import DatePicker from 'react-toolbox/lib/date_picker'
-// import TimePicker from 'react-toolbox/lib/time_picker'
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField'
@@ -13,11 +7,10 @@ import MenuItem from 'material-ui/MenuItem'
 import DatePicker from 'material-ui/DatePicker'
 import TimePicker from 'material-ui/TimePicker'
 import FlatButton from 'material-ui/FlatButton'
-
 import uniqueId from 'lodash/uniqueId'
 import moment from 'moment'
 
-@observer class ScheduleEditor extends React.Component {
+@observer class ScheduleEditorView extends React.Component {
   freqType = [
     {value: 0, label: 'Once'},
     {value: 1, label: 'Daily'},
@@ -63,9 +56,8 @@ import moment from 'moment'
     // this.setState({...this.props.editor.schedule})
     // console.log(editor, scheduleList)
     return (
-      <Dialog actions={this.actions}
-              open={editor.isVisible}
-              title='Schedule Editor'>
+      <Dialog title='Schedule Editor' actions={this.actions} open={editor.isVisible}>
+
           <DatePicker hintText={this.labels.scheduleDate}
                       floatingLabelText={this.labels.scheduleDate}
                       style={this.styles.dateTime}
@@ -138,4 +130,4 @@ import moment from 'moment'
   }
 }
 
-export default ScheduleEditor;
+export default ScheduleEditorView;

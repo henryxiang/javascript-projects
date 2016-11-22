@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import CalendarView from './view/calendar-view'
+import CalendarView from './view/calendar'
 import Calendar from './model/calendar'
 import Schedule from './model/schedule'
 import ScheduleEditor from './model/schedule-editor'
