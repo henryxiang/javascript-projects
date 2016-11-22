@@ -11,10 +11,8 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "lodash": "^4.17.2",
     "mobx": "^2.6.3",
     "mobx-react": "^3.5.9",
-    "moment": "^2.16.0",
     "react": "^15.4.0",
     "react-bootstrap": "^0.30.6",
     "react-dom": "^15.4.0",

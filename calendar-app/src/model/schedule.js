@@ -20,6 +20,7 @@ class Schedule {
 
   constructor() {
     this._id = uniqueId()
+    this.startTime = moment()
   }
 
   clone() {
@@ -35,18 +36,21 @@ class Schedule {
   }
 
   @action setScheduleDate(date) {
-    const editSchedule = this.schedule
+    console.log("setScheduleDate:", date)
     const newTime = moment(date)
-    editSchedule
+    if (!this.startTime)
+      this.startTime = moment()
+    this.startTime
       .year(newTime.year())
       .month(newTime.month())
       .date(newTime.date())
   }
 
   @action setScheduleTime(time) {
-    const editSchedule = this.schedule
     const newTime = moment(time)
-    editSchedule
+    if (!this.startTime)
+      this.startTime = moment()
+    this.startTime
       .hour(newTime.hour())
       .minute(newTime.minute())
   }

@@ -1,10 +1,11 @@
-import css from '../theme/calendar.scss'
+import '../css/calendar.css'
 
 import React from 'react'
 import {observer} from 'mobx-react'
 import moment from 'moment'
 import uniqueId from 'lodash/uniqueId'
-import {Button, IconButton} from 'react-toolbox/lib/button'
+import IconButton from 'material-ui/IconButton'
+import {blue500} from 'material-ui/styles/colors';
 import ScheduleEditor from './schedule-editor'
 
 @observer class CalendarView extends React.Component {
@@ -17,14 +18,14 @@ import ScheduleEditor from './schedule-editor'
     const days = this.getAllDaysInMonth(year, month)
 
     return (
-      <div className={css.calendar}>
+      <div className='calendar'>
         <header>
-          <h4>{calendarHeader}</h4>
+          <h1>{calendarHeader}</h1>
         </header>
-        <IconButton icon="fast_rewind" onClick={(event) => {calendar.changeMonth(-1)}} />
-        <IconButton icon="fast_forward" onClick={(event) => {calendar.changeMonth(1)}} />
-        <IconButton icon="add" primary onClick={(event) => {editor.clear(); editor.show()}} />
-        <div className={css["calendar-body"]}>
+        <IconButton iconClassName="fa fa-caret-left" onClick={(event) => {calendar.changeMonth(-1)}} />
+        <IconButton iconClassName="fa fa-caret-right" onClick={(event) => {calendar.changeMonth(1)}} />
+        <IconButton iconClassName="fa fa-plus" color={blue500} onClick={(event) => {editor.createNewSchedule()}} />
+        <div className="calendar-body">
           {this.renderWeekHeader()}
           {days.map(week => this.renderWeekRow(week))}
         </div>
@@ -35,7 +36,7 @@ import ScheduleEditor from './schedule-editor'
 
   renderWeekHeader() {
     return (
-      <ul className={css.weekdays}>
+      <ul className='weekdays'>
         <li>Sunday</li>
         <li>Monday</li>
         <li>Tuesday</li>
@@ -49,7 +50,7 @@ import ScheduleEditor from './schedule-editor'
 
   renderWeekRow(days) {
     return (
-      <ul key={uniqueId('week_')} className={css.days}>
+      <ul key={uniqueId('week_')} className='days'>
       {
         days.map(d => {
           if (d)
@@ -68,34 +69,34 @@ import ScheduleEditor from './schedule-editor'
     const date = moment(new Date(year, month-1, day))
     const visibleSchedules = scheduleList.getSchedules(date) || []
     // console.log("Visible Schedules:", date.toString(), visibleSchedules.length)
-    let liClassName = css.day
+    let liClassName = 'day'
     if (type) {
-      liClassName += " " + css[type]
+      liClassName += " " + type
     }
     return (
       <li key={uniqueId('day_')} className={liClassName}>
-        <div className={css.date}>{day}</div>
+        <div className='date'>{day}</div>
         {this.renderSchedules(visibleSchedules)}
       </li>
     )
   }
 
   renderSchedules(visibleSchedules) {
-      const {editor} = this.props
-      const charLimit = 40
-      return visibleSchedules.map(schedule => {
-        // console.log(schedule)
-        const {startTime, description} = schedule
-        return (
-          <div key={schedule._id} className={css.event}
-               onClick={(event) => {editor.setSchedule(schedule); editor.show()}} >
-            <div className={css["event-desc"]}>
-              {startTime.format("h:ma ")}
-              {description.length > charLimit ? description.substring(0, charLimit) + ' ...' : description}
-            </div>
+    const {editor} = this.props
+    const charLimit = 40
+    return visibleSchedules.map(schedule => {
+      // console.log(schedule)
+      const {startTime, description} = schedule
+      return (
+        <div key={schedule._id} className='event'
+             onClick={(event) => {editor.editSchedule(schedule)}} >
+          <div className="event-desc">
+            {startTime.format("h:mma ")}
+            {description.length > charLimit ? description.substring(0, charLimit) + ' ...' : description}
           </div>
-        )
-      })
+        </div>
+      )
+    })
   }
 
   getAllDaysInMonth(year, month) {
@@ -114,6 +115,7 @@ import ScheduleEditor from './schedule-editor'
     days.push(week)
     return days
   }
+
 }
 
 export default CalendarView
