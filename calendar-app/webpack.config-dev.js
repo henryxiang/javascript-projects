@@ -4,7 +4,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   entry: {
     bundle: './src/main.js',
-    vendors: ['react', 'react-dom', 'mobx', 'mobx-react', 'material-ui', 'lodash']
+    vendors: ['react', 'react-dom', 'mobx', 'mobx-react', 'material-ui', 'lodash', 'moment']
   },
   output: {
     path: './dist',

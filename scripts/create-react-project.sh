@@ -7,18 +7,13 @@ PROJECT_NAME=$1
 PROJECT_DIR=$BASE/$PROJECT_NAME
 
 echo -e "Creating project '$PROJECT_NAME'"
-mkdir $PROJECT_DIR
+cp -rf $CONFDIR $PROJECT_DIR
 
-echo "Setting up project files and directories"
-cd $PROJECT_DIR
-mkdir src dist test
-cp $CONFDIR/babelrc .babelrc
-cp $CONFDIR/webpack.config.js .
-cp $CONFDIR/index.html dist/
-cp $CONFDIR/main.jsx src/
-cat $CONFDIR/package.json | sed -e "s/__NAME__/$PROJECT_NAME/" > package.json
 
 echo "Installing Node modules"
+cd $PROJECT_DIR
+sed -i "s/__NAME__/$PROJECT_NAME/" package.json
 npm install
 
-echo "Done"
+echo "Finished creating project"
+echo -e "Run 'npm start' in '$PROJECT_DIR' directory"
