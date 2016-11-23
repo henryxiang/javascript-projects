@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress --color"
+    "build": "./node_modules/.bin/webpack --progress --colors"
   },
   "author": "Henry Xiang",
   "license": "ISC",
