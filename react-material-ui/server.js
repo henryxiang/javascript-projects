@@ -15,8 +15,23 @@ var timestamp = function() {
 /* Run Webpack in watch mode */
 var runWatcher = function() {
   var webpack = require('webpack');
+  var ProgressPlugin = require('webpack/lib/ProgressPlugin');
+  var sprintf = require("sprintf-js").sprintf;
   var conf = require(base + '/webpack.config-dev');
   var compiler = webpack(conf);
+
+  // Apply ProgressPlugin to webpack compiler to show progress
+  compiler.apply(new ProgressPlugin(function(percentage, msg) {
+    if (percentage === 0) {
+      console.log("Compiling source")
+    }
+    else if (percentage === 1) {
+      console.log("Compiling finished");
+    }
+    else {
+      process.stdout.write(sprintf("%d%% %-25s\r", Math.round(percentage * 100), msg));
+    }
+  }));
 
   console.log(timestamp(), "Starting Webpack watcher");
   compiler.watch(

@@ -404,15 +404,15 @@ webpackJsonp([0],{
 
 	var _IconButton2 = _interopRequireDefault(_IconButton);
 
-	var _Snackbar = __webpack_require__(544);
+	var _Snackbar = __webpack_require__(448);
 
 	var _Snackbar2 = _interopRequireDefault(_Snackbar);
 
 	var _colors = __webpack_require__(296);
 
-	__webpack_require__(448);
+	__webpack_require__(453);
 
-	var _styles = __webpack_require__(450);
+	var _styles = __webpack_require__(455);
 
 	var _styles2 = _interopRequireDefault(_styles);
 
@@ -498,14 +498,14 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 448:
+/***/ 453:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 450:
+/***/ 455:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
