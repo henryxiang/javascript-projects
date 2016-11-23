@@ -23,7 +23,7 @@ class ScheduleEditorView extends React.Component {
 
   labels = {
     scheduleDate: "Schedule Date",
-    schedulTime: "Schedule Time",
+    startTime: "Start Time",
     endTime: "End Time",
     description: "Description",
     frequency: "Frequency"
@@ -54,9 +54,9 @@ class ScheduleEditorView extends React.Component {
       align: 'center'
     },
     dateTime: {
-      display: 'inline-block',
-      // width: 160,
-      margin: '5px'
+      display: 'block',
+      width: 160,
+      margin: 5
     },
     selection: {
       width: '100px'
@@ -79,18 +79,20 @@ class ScheduleEditorView extends React.Component {
 
           <DatePicker hintText={this.labels.scheduleDate}
                       floatingLabelText={this.labels.scheduleDate}
-                      // style={this.styles.dateTime}
+                      style={this.styles.dateTime}
                       autoOk={true}
                       defaultDate={startTime.toDate()}
                       onChange={this.handleDateTimeChange.bind(this, 'scheduleDate')} />
-          <TimePicker hintText={this.labels.scheduleTime}
-                      floatingLabelText={this.labels.scheduleTime}
-                      // style={this.styles.dateTime}
+          <TimePicker key="startTime"
+                      hintText={this.labels.startTime}
+                      floatingLabelText={this.labels.startTime}
+                      style={this.styles.dateTime}
                       defaultTime={startTime.toDate()}
                       onChange={this.handleDateTimeChange.bind(this, 'scheduleTime')} />
-          <TimePicker hintText={this.labels.endTime}
+          <TimePicker key="endTime"
+                      hintText={this.labels.endTime}
                       floatingLabelText={this.labels.endTime}
-                      // style={this.styles.dateTime}
+                      style={this.styles.dateTime}
                       defaultTime={endTime.toDate()}
                       onChange={this.handleDateTimeChange.bind(this, 'endTime')} />
           <SelectField hintText={this.labels.frequency}
