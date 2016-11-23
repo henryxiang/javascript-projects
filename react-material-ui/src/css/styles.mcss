@@ -1,0 +1,9 @@
+.my-box {
+  border: 1px solid #ccc;
+  padding: 5px;
+  /*margin: 5px;*/
+}
+
+.side-bar .item {
+  margin: 10px;
+}

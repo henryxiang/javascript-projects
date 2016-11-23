@@ -28,6 +28,10 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
       {
+        test: /\.mcss$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&camelCase&localIdentName=[name]_[local]_[hash:base64:5]')
+      },
+      {
         test: /\.less$/,
         loader: "style-loader!css-loader!less-loader"
       },

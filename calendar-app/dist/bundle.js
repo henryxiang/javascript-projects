@@ -7715,20 +7715,21 @@ webpackJsonp([0],[
 	  _createClass(ScheduleStore, [{
 	    key: 'getSchedules',
 	    value: function getSchedules() {
-	      var scheduleList = new _scheduleList2.default();
 
 	      var schedule1 = new _schedule2.default();
 	      schedule1.startTime = (0, _moment2.default)();
 	      schedule1.startTime.date(1).hour(9).minute(0).second(0);
 	      schedule1.endTime = (0, _moment2.default)(schedule1.startTime).add(1, 'hours');
 	      schedule1.description = "Just a test.";
-	      scheduleList.add(schedule1);
 
 	      var schedule2 = new _schedule2.default();
 	      schedule2.startTime = (0, _moment2.default)();
 	      schedule2.startTime.date(1).hour(10).minute(30).second(0);
 	      schedule2.endTime = (0, _moment2.default)(schedule2.startTime).add(1, 'hours');
 	      schedule2.description = "This is another testing schedule with very long description.";
+
+	      var scheduleList = new _scheduleList2.default();
+	      scheduleList.add(schedule1);
 	      scheduleList.add(schedule2);
 
 	      return scheduleList;
