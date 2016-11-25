@@ -27,14 +27,18 @@ class TestApp extends React.Component {
       <MuiThemeProvider>
         <div>
           <h3>Material UI React Components Demo</h3>
-          <RaisedButton label="Click Me" onClick={() => this.handleClick("Button")}/>
-          <DatePicker hintText="Choose a date" />
-          <TimePicker hintText="Pick a time" />
-          <TextField hintText="Input Text" />
+          <DatePicker hintText="Choose a date" floatingLabelText="Date" />
+          <TimePicker hintText="Pick a time" floatingLabelText="Time"/>
+          <TextField hintText="What's your name?" floatingLabelText="Client Name"/>
           <FontIcon className="fa fa-address-book" style={iconStyles}
                     color={blue500}
                     hoverColor={greenA200}
-                    onClick={() => this.handleClick("Icon")} />
+                    onClick={() => this.handleClick("User Icon")} />
+
+          <RaisedButton label="Sign Up"
+                        onClick={() => this.handleClick("Sign Up Button")}
+                        style={{display:'block', width:120}}/>
+
           <Snackbar open={this.state.open}
                     message={this.state.message}
                     autoHideDuration={this.state.autoHideDuration} />

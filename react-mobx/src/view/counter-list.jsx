@@ -16,6 +16,15 @@ const defaultStyles = {
   render() {
     /* pass in backing model object via 'counterList' props */
     const {counterList, styles=defaultStyles} = this.props
+    const queryParams = this.getUrlQueryParams()
+
+    /* Observable: counterList.itmes */
+    let counters = counterList.items
+    if (queryParams && queryParams.sort) {
+      /* The value derived from an Observable is also observable*/
+      counters = this.getSortedCounters(queryParams.sort)
+    }
+
     return (
       <div>
         <Button bsStyle="primary" bsSize="xs" style={styles.counterAddButton}
@@ -23,11 +32,14 @@ const defaultStyles = {
                 onClick={(event) => {counterList.add(new Counter())}}>
           <i className="fa fa-plus" />
         </Button>
+        <Button bsStyle="danger" bsSize="xs" style={styles.counterAddButton}
+                /* Action: counterList.addCounter() */
+                onClick={(event) => {counterList.clear()}}>
+          <i className="fa fa-eraser" />
+        </Button>
 
         {
-          /* Observable: counterList.counters */
-          counterList.items.map(counter => {
-          // this.getSortedCounters("desc").map(counter => {
+          counters.map(counter => {
             return (
               <div key={counter._id}>
                 <CounterView counter={counter} />
@@ -61,6 +73,20 @@ const defaultStyles = {
   getTotalCount() {
     const counters = this.props.counterList.items
     return counters.reduce((total, counter) => total + counter.count, 0)
+  }
+
+  getUrlQueryParams() {
+    let queryParams = {};
+    let hashUrlSegments = window.location.hash.split("?")
+    if (hashUrlSegments.length === 2) {
+      let query = hashUrlSegments[1]
+      let vars = query.split("&");
+      for (let i=0; i<vars.length; i++) {
+        let pair = vars[i].split("=");
+        queryParams[pair[0]] = pair[1]
+      }
+    }
+    return queryParams;
   }
 }
 

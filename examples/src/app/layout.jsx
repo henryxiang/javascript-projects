@@ -18,6 +18,26 @@ const styles = {
   }
 }
 
+const links = [
+  {
+    id: 'material-ui',
+    label: 'Material UI Demo'
+  },
+  {
+    id: 'counter',
+    label: 'Counter App'
+  },
+  {
+    id: 'calendar',
+    label: 'Calendar App'
+  },
+  {
+    id: 'test',
+    label: 'Component Tester'
+  },
+]
+
+
 class AppLayout extends React.Component {
   state = {
     drawerOpen: false
@@ -40,15 +60,15 @@ class AppLayout extends React.Component {
                   openSecondary={true}
                   open={this.state.drawerOpen}
                   onRequestChange={(drawerOpen) => this.setState({drawerOpen})}>
-            <MenuItem onClick={this.handleClose}>
-              <Link to="/material-ui">Material UI</Link>
-            </MenuItem>
-            <MenuItem onClick={this.handleClose}>
-              <Link to="/counter">Counter App</Link>
-            </MenuItem>
-            <MenuItem onClick={this.handleClose}>
-              <Link to="/calendar">Calendar App</Link>
-            </MenuItem>
+            {
+              links.map(link => {
+                return (
+                  <MenuItem key={link.id} onClick={this.handleClose}>
+                    <Link to={link.id}>{link.label}</Link>
+                  </MenuItem>
+                )
+              })
+            }
           </Drawer>
           {this.props.children}
         </div>

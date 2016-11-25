@@ -6,6 +6,7 @@ import Index from './app/index'
 import MaterialUiDemoApp from './app/material-ui-demo-app'
 import CounterApp from './app/counter-app'
 import CalendarApp from './app/calendar-app'
+import ComponentTester from './app/component-tester.jsx'
 
 class Dispatcher extends React.Component {
 
@@ -17,6 +18,7 @@ class Dispatcher extends React.Component {
           <Route path="/material-ui" component={MaterialUiDemoApp} />
           <Route path="/counter" component={CounterApp} />
           <Route path="/calendar" component={CalendarApp} />
+          <Route path="/test" component={ComponentTester} />
         </Route>
       </Router>
     )

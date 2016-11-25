@@ -12,6 +12,10 @@ class ObservableList {
     this.items = this.items.filter(i => i._id !== item._id)
   }
 
+  @action clear() {
+    this.items = []
+  }
+  
   @computed get size() {
     return this.items.length
   }

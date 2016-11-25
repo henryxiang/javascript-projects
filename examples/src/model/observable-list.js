@@ -21,6 +21,10 @@ class ObservableList {
     })
   }
 
+  @action clear() {
+    this.items = []
+  }
+
   @computed get size() {
     return this.items.length
   }
