@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import {observer} from 'mobx-react'
 import Button from 'react-bootstrap/lib/Button'
 import CounterView from './counter'
@@ -27,9 +28,11 @@ const defaultStyles = {
 
     return (
       <div>
+        <input ref="counterName" placeholder="Counter Name" />
         <Button bsStyle="primary" bsSize="xs" style={styles.counterAddButton}
                 /* Action: counterList.addCounter() */
-                onClick={(event) => {counterList.add(new Counter())}}>
+                // onClick={(event) => {counterList.add(new Counter())}}>
+                onClick={(event) => {this.addCounter(event)}}>
           <i className="fa fa-plus" />
         </Button>
         <Button bsStyle="danger" bsSize="xs" style={styles.counterAddButton}
@@ -61,6 +64,15 @@ const defaultStyles = {
         </div>
       </div>
     )
+  }
+
+  addCounter(event) {
+    const {counterList} = this.props
+    event.preventDefault()
+    const counterName = ReactDOM.findDOMNode(this.refs.counterName).value
+    const counter = new Counter(counterName)
+    counterList.add(counter)
+    ReactDOM.findDOMNode(this.refs.counterName).value = ''
   }
 
   /* Function that generates values derived from observables */
