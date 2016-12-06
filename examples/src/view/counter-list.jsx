@@ -28,15 +28,10 @@ const defaultStyles = {
 
     return (
       <div>
-        <input ref="counterName" placeholder="Counter Name" />
-        <Button bsStyle="primary" bsSize="xs" style={styles.counterAddButton}
-                /* Action: counterList.addCounter() */
-                // onClick={(event) => {counterList.add(new Counter())}}>
-                onClick={(event) => {this.addCounter(event)}}>
-          <i className="fa fa-plus" />
-        </Button>
+        <input ref="counterName" placeholder="Item Name"
+               onKeyDown={(event) => this.addCounter(event)} />
         <Button bsStyle="danger" bsSize="xs" style={styles.counterAddButton}
-                /* Action: counterList.addCounter() */
+                /* Action: counterList.clear() */
                 onClick={(event) => {counterList.clear()}}>
           <i className="fa fa-eraser" />
         </Button>
@@ -58,7 +53,7 @@ const defaultStyles = {
 
         <div>
              {/* Computed properties: counterList.numberOfCounters and counterList.totalCount */}
-             <b>Counters: {counterList.size}</b>
+             <b>Items: {counterList.size}</b>
              {" "}
              <b>Total: {this.getTotalCount()}</b>
         </div>
@@ -68,11 +63,14 @@ const defaultStyles = {
 
   addCounter(event) {
     const {counterList} = this.props
-    event.preventDefault()
-    const counterName = ReactDOM.findDOMNode(this.refs.counterName).value
-    const counter = new Counter(counterName)
-    counterList.add(counter)
-    ReactDOM.findDOMNode(this.refs.counterName).value = ''
+    if (event.keyCode === 13) {
+      const counterName = event.target.value
+      console.log(counterName)
+      const counter = new Counter(counterName)
+      /* Action: counterList.addCounter() */
+      counterList.add(counter)
+      event.target.value = ''
+    }
   }
 
   /* Function that generates values derived from observables */

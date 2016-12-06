@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
+import {links} from '../conf/links'
 
 class Index extends React.Component {
 
@@ -8,9 +9,13 @@ class Index extends React.Component {
       <div>
         <h3>React Demo Apps</h3>
         <ul role="nav">
-          <li><Link to="/material-ui">Material UI</Link></li>
-          <li><Link to="/counter">Counter App</Link></li>
-          <li><Link to="/calendar">Calendar App</Link></li>
+          {
+            links.map(link => {
+              return (
+                <li key={link.id}><Link to={link.id}>{link.label}</Link></li>
+              )
+            })
+          }
         </ul>
       </div>
     )

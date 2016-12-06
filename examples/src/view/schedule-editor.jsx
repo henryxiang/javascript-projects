@@ -10,24 +10,60 @@ import FlatButton from 'material-ui/FlatButton'
 import uniqueId from 'lodash/uniqueId'
 import moment from 'moment'
 
+const freqType = [
+  {value: 0, label: 'Once'},
+  {value: 1, label: 'Daily'},
+  {value: 2, label: 'Weekly'},
+  {value: 3, label: 'Bi-Weekly'},
+  {value: 4, label: 'Monthly'},
+  {value: 5, label: 'Yearly'}
+]
+
+const labels = {
+  scheduleDate: "Schedule Date",
+  startTime: "Start Time",
+  endTime: "End Time",
+  description: "Description",
+  frequency: "Frequency"
+}
+
+const styles = {
+  dialog: {
+    width: '400px',
+    align: 'center'
+  },
+  dateTime: {
+    display: 'block',
+    width: 160,
+    margin: 5
+  },
+  selection: {
+    width: '100px'
+  },
+  textInput: {
+    width: '300px',
+    display: 'block'
+  }
+}
+
 @observer
 class ScheduleEditorView extends React.Component {
-  freqType = [
-    {value: 0, label: 'Once'},
-    {value: 1, label: 'Daily'},
-    {value: 2, label: 'Weekly'},
-    {value: 3, label: 'Bi-Weekly'},
-    {value: 4, label: 'Monthly'},
-    {value: 5, label: 'Yearly'}
-  ]
-
-  labels = {
-    scheduleDate: "Schedule Date",
-    startTime: "Start Time",
-    endTime: "End Time",
-    description: "Description",
-    frequency: "Frequency"
-  }
+  // freqType = [
+  //   {value: 0, label: 'Once'},
+  //   {value: 1, label: 'Daily'},
+  //   {value: 2, label: 'Weekly'},
+  //   {value: 3, label: 'Bi-Weekly'},
+  //   {value: 4, label: 'Monthly'},
+  //   {value: 5, label: 'Yearly'}
+  // ]
+  //
+  // labels = {
+  //   scheduleDate: "Schedule Date",
+  //   startTime: "Start Time",
+  //   endTime: "End Time",
+  //   description: "Description",
+  //   frequency: "Frequency"
+  // }
 
   actions = [
       <FlatButton
@@ -48,24 +84,24 @@ class ScheduleEditorView extends React.Component {
       />
   ]
 
-  styles = {
-    dialog: {
-      width: '400px',
-      align: 'center'
-    },
-    dateTime: {
-      display: 'block',
-      width: 160,
-      margin: 5
-    },
-    selection: {
-      width: '100px'
-    },
-    textInput: {
-      width: '300px',
-      display: 'block'
-    }
-  }
+  // styles = {
+  //   dialog: {
+  //     width: '400px',
+  //     align: 'center'
+  //   },
+  //   dateTime: {
+  //     display: 'block',
+  //     width: 160,
+  //     margin: 5
+  //   },
+  //   selection: {
+  //     width: '100px'
+  //   },
+  //   textInput: {
+  //     width: '300px',
+  //     display: 'block'
+  //   }
+  // }
 
   render() {
     const {editor, scheduleList} = this.props
@@ -75,39 +111,39 @@ class ScheduleEditorView extends React.Component {
     // this.setState({...this.props.editor.schedule})
     // console.debug(editor, scheduleList)
     return (
-      <Dialog title='Schedule Editor' actions={this.actions} open={editor.isVisible} contentStyle={this.styles.dialog}>
+      <Dialog title='Schedule Editor' actions={this.actions} open={editor.isVisible} contentStyle={styles.dialog}>
 
-          <DatePicker hintText={this.labels.scheduleDate}
-                      floatingLabelText={this.labels.scheduleDate}
-                      style={this.styles.dateTime}
+          <DatePicker hintText={labels.scheduleDate}
+                      floatingLabelText={labels.scheduleDate}
+                      style={styles.dateTime}
                       autoOk={true}
                       defaultDate={startTime.toDate()}
                       onChange={this.handleDateTimeChange.bind(this, 'scheduleDate')} />
           <TimePicker key="startTime"
-                      hintText={this.labels.startTime}
-                      floatingLabelText={this.labels.startTime}
-                      style={this.styles.dateTime}
+                      hintText={labels.startTime}
+                      floatingLabelText={labels.startTime}
+                      style={styles.dateTime}
                       defaultTime={startTime.toDate()}
                       onChange={this.handleDateTimeChange.bind(this, 'scheduleTime')} />
           <TimePicker key="endTime"
-                      hintText={this.labels.endTime}
-                      floatingLabelText={this.labels.endTime}
-                      style={this.styles.dateTime}
+                      hintText={labels.endTime}
+                      floatingLabelText={labels.endTime}
+                      style={styles.dateTime}
                       defaultTime={endTime.toDate()}
                       onChange={this.handleDateTimeChange.bind(this, 'endTime')} />
-          <SelectField hintText={this.labels.frequency}
-                       floatingLabelText={this.labels.frequency}
+          <SelectField hintText={labels.frequency}
+                       floatingLabelText={labels.frequency}
                       //  style={this.styles.dateTime}
                        value={freq}
                        autoWidth={true}
                        onChange={this.handleSelectionChange.bind(this, 'freq')}>
              {
-               this.freqType.map(t => <MenuItem key={t.value} value={t.value} primaryText={t.label} />)
+               freqType.map(t => <MenuItem key={t.value} value={t.value} primaryText={t.label} />)
              }
           </SelectField>
           <TextField id="description"
-                     hintText={this.labels.description}
-                     floatingLabelText={this.labels.description}
+                     hintText={labels.description}
+                     floatingLabelText={labels.description}
                     //  style={this.styles.textInput}
                      fullWidth={true}
                      multiLine={true} rows={5}

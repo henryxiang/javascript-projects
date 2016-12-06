@@ -5,6 +5,7 @@ import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 import {blue500} from 'material-ui/styles/colors';
 import {Link} from 'react-router'
+import {links} from '../conf/links'
 
 const styles = {
   nav: {
@@ -17,26 +18,6 @@ const styles = {
     color: blue500
   }
 }
-
-const links = [
-  {
-    id: 'material-ui',
-    label: 'Material UI Demo'
-  },
-  {
-    id: 'counter',
-    label: 'Counter App'
-  },
-  {
-    id: 'calendar',
-    label: 'Calendar App'
-  },
-  {
-    id: 'test',
-    label: 'Component Tester'
-  },
-]
-
 
 class AppLayout extends React.Component {
   state = {
@@ -60,6 +41,9 @@ class AppLayout extends React.Component {
                   openSecondary={true}
                   open={this.state.drawerOpen}
                   onRequestChange={(drawerOpen) => this.setState({drawerOpen})}>
+            <MenuItem key="index" onClick={this.handleClose}>
+              <Link to="/">Home</Link>
+            </MenuItem>
             {
               links.map(link => {
                 return (

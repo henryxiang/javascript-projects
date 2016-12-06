@@ -7,7 +7,6 @@ import uniqueId from 'lodash/uniqueId'
 import sortBy from 'lodash/sortBy'
 import IconButton from 'material-ui/IconButton'
 import Avatar from 'material-ui/Avatar'
-import {blue500} from 'material-ui/styles/colors';
 import ScheduleEditorView from './schedule-editor'
 
 @observer
@@ -30,10 +29,10 @@ class CalendarView extends React.Component {
         <IconButton iconClassName="fa fa-caret-right"
                     tooltip="Next month" tooltipPosition="top-center"
                     onClick={(event) => {calendar.changeMonth(1)}} />
-        <IconButton iconClassName="fa fa-calendar"
+        <IconButton iconClassName="fa fa-calendar" iconStyle={{color:'#449eed'}}
                     tooltip="Current month" tooltipPosition="top-center"
                     onClick={(event) => {calendar.resetCalendar()}} />
-        <IconButton iconClassName="fa fa-calendar-plus-o" iconStyle={{color:blue500}}
+        <IconButton iconClassName="fa fa-calendar-plus-o" iconStyle={{color:'#8ece88'}}
                     tooltip="New schedule" tooltipPosition="top-center"
                     onClick={(event) => {editor.createNewSchedule()}} />
         <div className="calendar-body">

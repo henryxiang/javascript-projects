@@ -6815,7 +6815,8 @@ button.close {
 }
 
 .calendar .days li {
-  height: 180px;
+  height: 150px;
+  overflow-y: auto;
 }
 
 .calendar .days li:hover {

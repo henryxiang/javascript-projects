@@ -39,7 +39,8 @@ class Calendar {
       }
       d.add(1, 'days')
     }
-    days.push(week)
+    if (week[0] != null)
+      days.push(week)
     return days
   }
 }
