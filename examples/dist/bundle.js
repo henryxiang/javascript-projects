@@ -12435,46 +12435,9 @@ webpackJsonp([0],[
 	      editSchedule[id] = value;
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
-	  // freqType = [
-	  //   {value: 0, label: 'Once'},
-	  //   {value: 1, label: 'Daily'},
-	  //   {value: 2, label: 'Weekly'},
-	  //   {value: 3, label: 'Bi-Weekly'},
-	  //   {value: 4, label: 'Monthly'},
-	  //   {value: 5, label: 'Yearly'}
-	  // ]
-	  //
-	  // labels = {
-	  //   scheduleDate: "Schedule Date",
-	  //   startTime: "Start Time",
-	  //   endTime: "End Time",
-	  //   description: "Description",
-	  //   frequency: "Frequency"
-	  // }
 
 	  _createClass(ScheduleEditorView, [{
 	    key: 'render',
-
-
-	    // styles = {
-	    //   dialog: {
-	    //     width: '400px',
-	    //     align: 'center'
-	    //   },
-	    //   dateTime: {
-	    //     display: 'block',
-	    //     width: 160,
-	    //     margin: 5
-	    //   },
-	    //   selection: {
-	    //     width: '100px'
-	    //   },
-	    //   textInput: {
-	    //     width: '300px',
-	    //     display: 'block'
-	    //   }
-	    // }
-
 	    value: function render() {
 	      var _props = this.props,
 	          editor = _props.editor,
@@ -12486,8 +12449,6 @@ webpackJsonp([0],[
 	          endTime = _props$editor$schedul.endTime,
 	          description = _props$editor$schedul.description,
 	          freq = _props$editor$schedul.freq;
-	      // const {startTime, duration, description, freq} = this.state
-	      // this.setState({...this.props.editor.schedule})
 	      // console.debug(editor, scheduleList)
 
 	      return _react2.default.createElement(
