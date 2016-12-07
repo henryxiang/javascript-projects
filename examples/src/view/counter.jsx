@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/lib/Row'
 const defalutStyles = {
   counter: {
     display: 'inline-block',
-    width: '180px',
+    width: '150px',
     margin: '5px',
     cursor: 'pointer'
   },
