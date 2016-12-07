@@ -15159,8 +15159,10 @@ webpackJsonp([0],[
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var likeCounter = new _counter2.default();
-	var dislikeCounter = new _counter2.default();
+	var props = {
+	  likeCounter: new _counter2.default(),
+	  dislikeCounter: new _counter2.default()
+	};
 
 	var LikeItApp = function (_React$Component) {
 	  _inherits(LikeItApp, _React$Component);
@@ -15174,7 +15176,7 @@ webpackJsonp([0],[
 	  _createClass(LikeItApp, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_likeIt2.default, { likeCounter: likeCounter, dislikeCounter: dislikeCounter });
+	      return _react2.default.createElement(_likeIt2.default, props);
 	    }
 	  }]);
 
