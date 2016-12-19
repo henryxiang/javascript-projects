@@ -14,7 +14,7 @@ cp -rf $CONFDIR $PROJECT_DIR
 
 echo "Installing Node modules"
 cd $PROJECT_DIR
-sed -i "s/__NAME__/$PROJECT_NAME/" package.json
+sed -i -e "s/__NAME__/$PROJECT_NAME/" package.json
 npm install
 
 echo "Finished creating project"
