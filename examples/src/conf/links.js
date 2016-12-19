@@ -16,6 +16,10 @@ export const links = [
     label: 'Calendar App'
   },
   {
+    id: 'bouncing-ball',
+    label: 'Bouncing Ball (p5.js)'
+  },
+  {
     id: 'test',
     label: 'Component Tester'
   },
