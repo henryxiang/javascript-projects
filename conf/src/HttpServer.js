@@ -1,36 +1,22 @@
-import express from 'express';
+import jsonServer from 'json-server';
 import livereload from 'express-livereload';
+import path from 'path';
 
 const port = '8000';
-const app = express();
-const docRoot = __dirname + '/../dist';
+const docRoot = path.join(process.cwd(), 'dist');
+
+const app = jsonServer.create();
+const router = jsonServer.router(`${docRoot}/db.json`);
+const config = jsonServer.defaults({static: docRoot});
 
 console.log(`Document Root: ${docRoot}`);
-app.use(express.static(docRoot));
 
-// handling 404 pages
-app.get('*', function(req, res) {
-  res.status(404).send('Server.js > 404 - Page Not Found');
-});
+app.use(config);
+app.use(router);
 
-// global error catcher, need four arguments
-app.use((err, req, res, next) => {
-  console.error("Error on request %s %s", req.method, req.url);
-  console.error(err.stack);
-  res.status(500).send("Server error");
-});
-
-process.on('uncaughtException', evt => {
-  console.log('uncaughtException: ', evt);
-});
-
-// app.get("/", (req, res) => {
-//   res.status(200).send("OK");
-// });
-
-app.listen(port, function(){
-  let timestamp = new Date().toISOString();
-  console.log(`Server URL: http://localhost:${port}`);
+app.listen(port, () => {
+    let timestamp = new Date().toISOString();
+    console.log(`Server URL: http://localhost:${port}`);
 });
 
 livereload(app, {watchDir: docRoot});

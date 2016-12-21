@@ -24,23 +24,20 @@ var runWatcher = function() {
   compiler.apply(new ProgressPlugin(function(percentage, msg) {
     if (percentage === 0) {
       console.log("Compiling source")
-    }
-    else if (percentage === 1) {
+    } else if (percentage === 1) {
       console.log("Compiling finished");
-    }
-    else {
+    } else {
       process.stdout.write(sprintf("%d%% %-25s\r", Math.round(percentage * 100), msg));
     }
   }));
 
   console.log(timestamp(), "Starting Webpack watcher");
-  compiler.watch(
-    {
+  compiler.watch({
       aggregateTimeout: 300, // wait so long for more changes
       poll: true
     },
     function(err, stats) {
-      if(err) {
+      if (err) {
         console.log(err);
         return;
       }
@@ -60,12 +57,12 @@ var runServer = function() {
     watch: [serverStarter, httpServer]
   });
 
-  nodemon.on('start', function () {
+  nodemon.on('start', function() {
     console.log(timestamp(), 'Starting server');
-  }).on('quit', function () {
+  }).on('quit', function() {
     console.log(timestamp(), 'Shutting down server');
     process.exit();
-  }).on('restart', function (files) {
+  }).on('restart', function(files) {
     console.log(timestamp(), 'Restarting server due to changes: ', files);
   });
 };
@@ -73,5 +70,7 @@ var runServer = function() {
 /* Start HTTP server and Webpack watcher in parallel */
 async.parallel([
   runServer,
-  function() { setTimeout(runWatcher, 2000); }
+  function() {
+    setTimeout(runWatcher, 2000);
+  }
 ]);
