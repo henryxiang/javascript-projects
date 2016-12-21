@@ -17,7 +17,7 @@ export const links = [
   },
   {
     id: 'bouncing-ball',
-    label: 'Bouncing Ball (p5.js)'
+    label: 'Bouncing Ball'
   },
   {
     id: 'test',

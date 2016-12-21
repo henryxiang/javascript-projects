@@ -5553,7 +5553,7 @@ webpackJsonp([0],[
 	  label: 'Calendar App'
 	}, {
 	  id: 'bouncing-ball',
-	  label: 'Bouncing Ball (p5.js)'
+	  label: 'Bouncing Ball'
 	}, {
 	  id: 'test',
 	  label: 'Component Tester'
@@ -14909,7 +14909,7 @@ webpackJsonp([0],[
 	        _react2.default.createElement(
 	          'h3',
 	          null,
-	          'P5.js Demo (Bouncing Ball)'
+	          'Bouncing Ball Demo'
 	        ),
 	        _react2.default.createElement(_p5Wrapper2.default, { sketch: _bouncingBall2.default })
 	      );

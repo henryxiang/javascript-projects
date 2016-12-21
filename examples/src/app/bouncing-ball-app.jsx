@@ -8,7 +8,7 @@ class P5App extends React.Component {
   render() {
     return (
       <div>
-          <h3>P5.js Demo (Bouncing Ball)</h3>
+          <h3>Bouncing Ball Demo</h3>
           <P5Wrapper sketch={sketch} />
       </div>
     )
