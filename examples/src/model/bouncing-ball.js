@@ -4,8 +4,8 @@ class Ball {
   constructor(p) {
     this.x = 300
     this.y = 200
-    this.diameter = 25
-    this.speed = 10
+    this.diameter = 50
+    this.speed = 20
     this.direction = PI/4
     this.speedX = this.speed * p.cos(this.direction)
     this.speedY = this.speed * p.sin(this.direction)
