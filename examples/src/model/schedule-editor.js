@@ -36,11 +36,15 @@ class ScheduleEditor {
   }
 
   @action saveTo(scheduleList) {
-    // console.debug("saveTo ", this.schedule, scheduleList)
-    if (findIndex(scheduleList, s => s._id === this.schedule._id) >= 0)
+    console.debug("saveTo ", this.schedule, scheduleList)
+    // if (findIndex(scheduleList, s => s._id === this.schedule._id) >= 0)
+    if (this.schedule._id) {
+      console.debug("updating...")
       scheduleList.update(this.schedule)
-    else
+    } else {
+      console.debug("saving...")
       scheduleList.add(this.schedule)
+    }
     this.isVisible = false
   }
 }

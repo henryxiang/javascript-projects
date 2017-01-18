@@ -14,6 +14,7 @@ class RealTimeObservableList {
       create: `${endPoint}::create`,
       update: `${endPoint}::update`,
       remove: `${endPoint}::remove`,
+      find:   `${endPoint}::find`,
       created: `${endPoint} created`,
       updated: `${endPoint} updated`,
       removed: `${endPoint} removed`,
@@ -24,20 +25,35 @@ class RealTimeObservableList {
   registerRealTimeEventListner() {
     this.socket.on(this.msg.created, (data) => {
       console.log("listener: item created =>\n", JSON.stringify(data, null, 2))
-      //this.items.push(data)
-      //this.addDataToCollection(data)
+      this.addToCollection(data)
     })
 
     this.socket.on(this.msg.updated, (data) => {
       console.log("listener: item updated =>\n", JSON.stringify(data, null, 2))
-      //this.items.push(data)
-      //this.addDataToCollection(data)
+      this.updateCollection(data)
+    })
+
+    this.socket.on(this.msg.removed, (data) => {
+      console.log("listener: item removed =>\n", JSON.stringify(data, null, 2))
+      this.removeFromCollection(data)
     })
   }
 
-  @action addDataToCollection(data) {
-    //this.items.push(data)
-    console.log("items =>\n", JSON.stringify(this.items, null, 2)) 
+  @action addToCollection(data) {
+    this.items.push(data)
+  }
+
+  @action updateCollection(data) {
+    this.items = this.items.map(i => {
+      if (i._id === data._id)
+        return data
+      else
+        return i
+    })
+  }
+
+  @action removeFromCollection(data) {
+    this.items = this.items.filter(i => i._id !== data._id)   
   }
 
   @action add(item) {
@@ -100,6 +116,23 @@ class RealTimeObservableList {
 
   @computed get size() {
     return this.items.length
+  }
+
+  exists(item) {
+    return _.findIndex(this.items, {_id: item._id}) >= 0
+  }
+
+  @action loadData(filter) {
+    this.socket.emit(this.msg.find, filter, 
+      (error, data) => {
+        if (!error) {
+          console.log("load data =>\n", JSON.stringify(data, null, 2))
+          this.items.push(data)
+        } else {
+          console.error("data loading error: ", error)
+        }
+      }
+    )
   }
 }
 

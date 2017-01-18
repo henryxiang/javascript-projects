@@ -19,7 +19,7 @@ class Schedule {
   @observable freq = ScheduleType.once // int
 
   constructor() {
-    this._id = uniqueId()
+    // this._id = uniqueId()
     this.startTime = moment()
     this.endTime = moment()
   }

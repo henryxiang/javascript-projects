@@ -1,4 +1,5 @@
 'use strict';
+const schedule = require('./schedule');
 const counter = require('./counter');
 const message = require('./message');
 const authentication = require('./authentication');
@@ -12,4 +13,5 @@ module.exports = function() {
   app.configure(user);
   app.configure(message);
   app.configure(counter);
+  app.configure(schedule);
 };
