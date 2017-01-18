@@ -79,7 +79,7 @@ class CalendarView extends React.Component {
     const date = moment(new Date(year, month-1, day))
     const visibleSchedules = scheduleList.getSchedules(date) || []
     let dayView = day
-    if (moment().diff(date, 'hours') < 24 && moment().diff(date, 'hours') >= 0)
+    if (moment().format('YYYYMMDD') === date.format('YYYYMMDD'))
       dayView = (<Avatar>{day}</Avatar>)
     // console.debug("Visible Schedules:", date.toString(), visibleSchedules.length)
     return (

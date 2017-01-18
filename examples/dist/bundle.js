@@ -16569,7 +16569,7 @@ webpackJsonp([0],[
 	      var date = (0, _moment2.default)(new Date(year, month - 1, day));
 	      var visibleSchedules = scheduleList.getSchedules(date) || [];
 	      var dayView = day;
-	      if ((0, _moment2.default)().diff(date, 'hours') < 24 && (0, _moment2.default)().diff(date, 'hours') >= 0) dayView = _react2.default.createElement(
+	      if ((0, _moment2.default)().format('YYYYMMDD') === date.format('YYYYMMDD')) dayView = _react2.default.createElement(
 	        _Avatar2.default,
 	        null,
 	        day
