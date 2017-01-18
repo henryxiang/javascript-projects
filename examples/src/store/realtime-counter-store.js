@@ -12,10 +12,12 @@ class RealTimeCounterStore {
     this.endPoint = endPoint
     this.socket = io(url)
     this.msg = {
+      // Outgoing CRUD messages
       create: `${endPoint}::create`,
       update: `${endPoint}::update`,
       remove: `${endPoint}::remove`,
       find:   `${endPoint}::find`,
+      // Incoming event messages
       created: `${endPoint} created`,
       updated: `${endPoint} updated`,
       removed: `${endPoint} removed`,
