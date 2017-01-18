@@ -26,8 +26,8 @@ const defalutStyles = {
     return (
       <div style={styles.counter}
            /* Actions: counter.increment() and counter.reset() */
-           onClick={(event) => {event.preventDefault(); counter.increment()}}
-           onContextMenu={(event) => {event.preventDefault(); counter.reset()}}>
+           onClick={(event) => {event.preventDefault(); this.incrementCounter()}}
+           onContextMenu={(event) => {event.preventDefault(); this.resetCounter()}}>
         {counter.name}
         <Badge style={styles.badge}>
           {/* Obsersvable: counter.count */}
@@ -36,6 +36,19 @@ const defalutStyles = {
       </div>
     )
   }
+
+  incrementCounter() {
+    const {counter, counterList} = this.props
+    counter.increment()
+    counterList.update(counter)
+  }
+
+  resetCounter() {
+    const {counter, counterList} = this.props
+    counter.reset()
+    counterList.update(counter)
+  }
+
 }
 
 export default CounterView

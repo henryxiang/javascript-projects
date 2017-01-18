@@ -40,7 +40,7 @@ const defaultStyles = {
           counters.map(counter => {
             return (
               <div key={counter._id}>
-                <CounterView counter={counter} />
+                <CounterView counter={counter} counterList={counterList}/>
                 <Button bsStyle="danger" bsSize="xs"
                         /* Action: counterList.removeCounter() */
                         onClick={(event) => {counterList.remove(counter)}}>

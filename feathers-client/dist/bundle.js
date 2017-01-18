@@ -27,7 +27,7 @@ webpackJsonp([0],{
 
 	var _materialUiApp2 = _interopRequireDefault(_materialUiApp);
 
-	var _socket = __webpack_require__(679);
+	var _socket = __webpack_require__(454);
 
 	var _socket2 = _interopRequireDefault(_socket);
 
@@ -291,6 +291,103 @@ webpackJsonp([0],{
 
 /***/ },
 
+/***/ 191:
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 */
+
+	'use strict';
+
+	/**
+	 * Types of raw signals from the browser caught at the top level.
+	 */
+	var topLevelTypes = {
+	  topAbort: null,
+	  topAnimationEnd: null,
+	  topAnimationIteration: null,
+	  topAnimationStart: null,
+	  topBlur: null,
+	  topCanPlay: null,
+	  topCanPlayThrough: null,
+	  topChange: null,
+	  topClick: null,
+	  topCompositionEnd: null,
+	  topCompositionStart: null,
+	  topCompositionUpdate: null,
+	  topContextMenu: null,
+	  topCopy: null,
+	  topCut: null,
+	  topDoubleClick: null,
+	  topDrag: null,
+	  topDragEnd: null,
+	  topDragEnter: null,
+	  topDragExit: null,
+	  topDragLeave: null,
+	  topDragOver: null,
+	  topDragStart: null,
+	  topDrop: null,
+	  topDurationChange: null,
+	  topEmptied: null,
+	  topEncrypted: null,
+	  topEnded: null,
+	  topError: null,
+	  topFocus: null,
+	  topInput: null,
+	  topInvalid: null,
+	  topKeyDown: null,
+	  topKeyPress: null,
+	  topKeyUp: null,
+	  topLoad: null,
+	  topLoadedData: null,
+	  topLoadedMetadata: null,
+	  topLoadStart: null,
+	  topMouseDown: null,
+	  topMouseMove: null,
+	  topMouseOut: null,
+	  topMouseOver: null,
+	  topMouseUp: null,
+	  topPaste: null,
+	  topPause: null,
+	  topPlay: null,
+	  topPlaying: null,
+	  topProgress: null,
+	  topRateChange: null,
+	  topReset: null,
+	  topScroll: null,
+	  topSeeked: null,
+	  topSeeking: null,
+	  topSelectionChange: null,
+	  topStalled: null,
+	  topSubmit: null,
+	  topSuspend: null,
+	  topTextInput: null,
+	  topTimeUpdate: null,
+	  topTouchCancel: null,
+	  topTouchEnd: null,
+	  topTouchMove: null,
+	  topTouchStart: null,
+	  topTransitionEnd: null,
+	  topVolumeChange: null,
+	  topWaiting: null,
+	  topWheel: null
+	};
+
+	var EventConstants = {
+	  topLevelTypes: topLevelTypes
+	};
+
+	module.exports = EventConstants;
+
+/***/ },
+
 /***/ 192:
 /***/ function(module, exports) {
 
@@ -399,33 +496,33 @@ webpackJsonp([0],{
 
 	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
-	var _DatePicker = __webpack_require__(380);
+	var _DatePicker = __webpack_require__(376);
 
 	var _DatePicker2 = _interopRequireDefault(_DatePicker);
 
-	var _TimePicker = __webpack_require__(435);
+	var _TimePicker = __webpack_require__(432);
 
 	var _TimePicker2 = _interopRequireDefault(_TimePicker);
 
-	var _TextField = __webpack_require__(429);
+	var _TextField = __webpack_require__(426);
 
 	var _TextField2 = _interopRequireDefault(_TextField);
 
-	var _FontIcon = __webpack_require__(401);
+	var _FontIcon = __webpack_require__(397);
 
 	var _FontIcon2 = _interopRequireDefault(_FontIcon);
 
-	var _IconButton = __webpack_require__(399);
+	var _IconButton = __webpack_require__(395);
 
 	var _IconButton2 = _interopRequireDefault(_IconButton);
 
-	var _Snackbar = __webpack_require__(452);
+	var _Snackbar = __webpack_require__(449);
 
 	var _Snackbar2 = _interopRequireDefault(_Snackbar);
 
 	var _colors = __webpack_require__(296);
 
-	var _socket = __webpack_require__(679);
+	var _socket = __webpack_require__(454);
 
 	var _socket2 = _interopRequireDefault(_socket);
 
@@ -474,7 +571,7 @@ webpackJsonp([0],{
 	        //console.log(message)
 	        _this.setState({ messageId: message._id });
 	      });
-	      socket.emit("messages::update", _this.state.messageId, { test: "hello, world" }, function (error, data) {});
+	      socket.emit("messages::update", _this.state.messageId, { text: "hello, world" }, function (error, data) {});
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -517,7 +614,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 679:
+/***/ 454:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -525,10 +622,10 @@ webpackJsonp([0],{
 	 * Module dependencies.
 	 */
 
-	var url = __webpack_require__(680);
-	var parser = __webpack_require__(685);
-	var Manager = __webpack_require__(695);
-	var debug = __webpack_require__(682)('socket.io-client');
+	var url = __webpack_require__(455);
+	var parser = __webpack_require__(460);
+	var Manager = __webpack_require__(470);
+	var debug = __webpack_require__(457)('socket.io-client');
 
 	/**
 	 * Module exports.
@@ -627,13 +724,13 @@ webpackJsonp([0],{
 	 * @api public
 	 */
 
-	exports.Manager = __webpack_require__(695);
-	exports.Socket = __webpack_require__(725);
+	exports.Manager = __webpack_require__(470);
+	exports.Socket = __webpack_require__(497);
 
 
 /***/ },
 
-/***/ 680:
+/***/ 455:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -641,8 +738,8 @@ webpackJsonp([0],{
 	 * Module dependencies.
 	 */
 
-	var parseuri = __webpack_require__(681);
-	var debug = __webpack_require__(682)('socket.io-client:url');
+	var parseuri = __webpack_require__(456);
+	var debug = __webpack_require__(457)('socket.io-client:url');
 
 	/**
 	 * Module exports.
@@ -716,7 +813,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 681:
+/***/ 456:
 /***/ function(module, exports) {
 
 	/**
@@ -762,7 +859,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 682:
+/***/ 457:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
@@ -772,7 +869,7 @@ webpackJsonp([0],{
 	 * Expose `debug()` as the module.
 	 */
 
-	exports = module.exports = __webpack_require__(683);
+	exports = module.exports = __webpack_require__(458);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -947,7 +1044,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 683:
+/***/ 458:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -963,7 +1060,7 @@ webpackJsonp([0],{
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(684);
+	exports.humanize = __webpack_require__(459);
 
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -1154,7 +1251,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 684:
+/***/ 459:
 /***/ function(module, exports) {
 
 	/**
@@ -1310,7 +1407,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 685:
+/***/ 460:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1318,11 +1415,11 @@ webpackJsonp([0],{
 	 * Module dependencies.
 	 */
 
-	var debug = __webpack_require__(686)('socket.io-parser');
-	var json = __webpack_require__(689);
-	var Emitter = __webpack_require__(691);
-	var binary = __webpack_require__(692);
-	var isBuf = __webpack_require__(694);
+	var debug = __webpack_require__(461)('socket.io-parser');
+	var json = __webpack_require__(464);
+	var Emitter = __webpack_require__(466);
+	var binary = __webpack_require__(467);
+	var isBuf = __webpack_require__(469);
 
 	/**
 	 * Protocol version.
@@ -1721,7 +1818,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 686:
+/***/ 461:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1731,7 +1828,7 @@ webpackJsonp([0],{
 	 * Expose `debug()` as the module.
 	 */
 
-	exports = module.exports = __webpack_require__(687);
+	exports = module.exports = __webpack_require__(462);
 	exports.log = log;
 	exports.formatArgs = formatArgs;
 	exports.save = save;
@@ -1896,7 +1993,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 687:
+/***/ 462:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -1912,7 +2009,7 @@ webpackJsonp([0],{
 	exports.disable = disable;
 	exports.enable = enable;
 	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(688);
+	exports.humanize = __webpack_require__(463);
 
 	/**
 	 * The currently active debug mode names, and names to skip.
@@ -2100,7 +2197,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 688:
+/***/ 463:
 /***/ function(module, exports) {
 
 	/**
@@ -2232,14 +2329,14 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 689:
+/***/ 464:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! JSON v3.3.2 | http://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org */
 	;(function () {
 	  // Detect the `define` function exposed by asynchronous module loaders. The
 	  // strict `define` check is necessary for compatibility with `r.js`.
-	  var isLoader = "function" === "function" && __webpack_require__(690);
+	  var isLoader = "function" === "function" && __webpack_require__(465);
 
 	  // A set of types used to distinguish objects from primitives.
 	  var objectTypes = {
@@ -3142,7 +3239,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 690:
+/***/ 465:
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -3151,7 +3248,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 691:
+/***/ 466:
 /***/ function(module, exports) {
 
 	
@@ -3322,7 +3419,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 692:
+/***/ 467:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*global Blob,File*/
@@ -3331,8 +3428,8 @@ webpackJsonp([0],{
 	 * Module requirements
 	 */
 
-	var isArray = __webpack_require__(693);
-	var isBuf = __webpack_require__(694);
+	var isArray = __webpack_require__(468);
+	var isBuf = __webpack_require__(469);
 
 	/**
 	 * Replaces every Buffer | ArrayBuffer in packet with a numbered placeholder.
@@ -3471,7 +3568,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 693:
+/***/ 468:
 /***/ function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -3481,7 +3578,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 694:
+/***/ 469:
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -3502,7 +3599,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 695:
+/***/ 470:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -3510,15 +3607,15 @@ webpackJsonp([0],{
 	 * Module dependencies.
 	 */
 
-	var eio = __webpack_require__(696);
-	var Socket = __webpack_require__(725);
-	var Emitter = __webpack_require__(714);
-	var parser = __webpack_require__(685);
-	var on = __webpack_require__(727);
-	var bind = __webpack_require__(728);
-	var debug = __webpack_require__(682)('socket.io-client:manager');
-	var indexOf = __webpack_require__(723);
-	var Backoff = __webpack_require__(729);
+	var eio = __webpack_require__(471);
+	var Socket = __webpack_require__(497);
+	var Emitter = __webpack_require__(488);
+	var parser = __webpack_require__(460);
+	var on = __webpack_require__(499);
+	var bind = __webpack_require__(500);
+	var debug = __webpack_require__(457)('socket.io-client:manager');
+	var indexOf = __webpack_require__(495);
+	var Backoff = __webpack_require__(501);
 
 	/**
 	 * IE6+ hasOwnProperty
@@ -4069,20 +4166,20 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 696:
+/***/ 471:
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(697);
+	module.exports = __webpack_require__(472);
 
 
 /***/ },
 
-/***/ 697:
+/***/ 472:
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(698);
+	module.exports = __webpack_require__(473);
 
 	/**
 	 * Exports parser
@@ -4090,26 +4187,26 @@ webpackJsonp([0],{
 	 * @api public
 	 *
 	 */
-	module.exports.parser = __webpack_require__(705);
+	module.exports.parser = __webpack_require__(480);
 
 
 /***/ },
 
-/***/ 698:
+/***/ 473:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 
-	var transports = __webpack_require__(699);
-	var Emitter = __webpack_require__(714);
-	var debug = __webpack_require__(718)('engine.io-client:socket');
-	var index = __webpack_require__(723);
-	var parser = __webpack_require__(705);
-	var parseuri = __webpack_require__(681);
-	var parsejson = __webpack_require__(724);
-	var parseqs = __webpack_require__(715);
+	var transports = __webpack_require__(474);
+	var Emitter = __webpack_require__(488);
+	var debug = __webpack_require__(457)('engine.io-client:socket');
+	var index = __webpack_require__(495);
+	var parser = __webpack_require__(480);
+	var parseuri = __webpack_require__(456);
+	var parsejson = __webpack_require__(496);
+	var parseqs = __webpack_require__(489);
 
 	/**
 	 * Module exports.
@@ -4241,9 +4338,9 @@ webpackJsonp([0],{
 	 */
 
 	Socket.Socket = Socket;
-	Socket.Transport = __webpack_require__(704);
-	Socket.transports = __webpack_require__(699);
-	Socket.parser = __webpack_require__(705);
+	Socket.Transport = __webpack_require__(479);
+	Socket.transports = __webpack_require__(474);
+	Socket.parser = __webpack_require__(480);
 
 	/**
 	 * Creates transport of the given type.
@@ -4841,17 +4938,17 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 699:
+/***/ 474:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies
 	 */
 
-	var XMLHttpRequest = __webpack_require__(700);
-	var XHR = __webpack_require__(702);
-	var JSONP = __webpack_require__(720);
-	var websocket = __webpack_require__(721);
+	var XMLHttpRequest = __webpack_require__(475);
+	var XHR = __webpack_require__(477);
+	var JSONP = __webpack_require__(492);
+	var websocket = __webpack_require__(493);
 
 	/**
 	 * Export transports.
@@ -4902,12 +4999,12 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 700:
+/***/ 475:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// browser shim for xmlhttprequest module
 
-	var hasCORS = __webpack_require__(701);
+	var hasCORS = __webpack_require__(476);
 
 	module.exports = function (opts) {
 	  var xdomain = opts.xdomain;
@@ -4947,7 +5044,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 701:
+/***/ 476:
 /***/ function(module, exports) {
 
 	
@@ -4971,18 +5068,18 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 702:
+/***/ 477:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module requirements.
 	 */
 
-	var XMLHttpRequest = __webpack_require__(700);
-	var Polling = __webpack_require__(703);
-	var Emitter = __webpack_require__(714);
-	var inherit = __webpack_require__(716);
-	var debug = __webpack_require__(718)('engine.io-client:polling-xhr');
+	var XMLHttpRequest = __webpack_require__(475);
+	var Polling = __webpack_require__(478);
+	var Emitter = __webpack_require__(488);
+	var inherit = __webpack_require__(490);
+	var debug = __webpack_require__(457)('engine.io-client:polling-xhr');
 
 	/**
 	 * Module exports.
@@ -5403,19 +5500,19 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 703:
+/***/ 478:
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var Transport = __webpack_require__(704);
-	var parseqs = __webpack_require__(715);
-	var parser = __webpack_require__(705);
-	var inherit = __webpack_require__(716);
-	var yeast = __webpack_require__(717);
-	var debug = __webpack_require__(718)('engine.io-client:polling');
+	var Transport = __webpack_require__(479);
+	var parseqs = __webpack_require__(489);
+	var parser = __webpack_require__(480);
+	var inherit = __webpack_require__(490);
+	var yeast = __webpack_require__(491);
+	var debug = __webpack_require__(457)('engine.io-client:polling');
 
 	/**
 	 * Module exports.
@@ -5428,7 +5525,7 @@ webpackJsonp([0],{
 	 */
 
 	var hasXHR2 = (function () {
-	  var XMLHttpRequest = __webpack_require__(700);
+	  var XMLHttpRequest = __webpack_require__(475);
 	  var xhr = new XMLHttpRequest({ xdomain: false });
 	  return null != xhr.responseType;
 	})();
@@ -5655,15 +5752,15 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 704:
+/***/ 479:
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 
-	var parser = __webpack_require__(705);
-	var Emitter = __webpack_require__(714);
+	var parser = __webpack_require__(480);
+	var Emitter = __webpack_require__(488);
 
 	/**
 	 * Module exports.
@@ -5819,22 +5916,22 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 705:
+/***/ 480:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 
-	var keys = __webpack_require__(706);
-	var hasBinary = __webpack_require__(707);
-	var sliceBuffer = __webpack_require__(709);
-	var after = __webpack_require__(710);
-	var utf8 = __webpack_require__(711);
+	var keys = __webpack_require__(481);
+	var hasBinary = __webpack_require__(482);
+	var sliceBuffer = __webpack_require__(483);
+	var after = __webpack_require__(484);
+	var utf8 = __webpack_require__(485);
 
 	var base64encoder;
 	if (global && global.ArrayBuffer) {
-	  base64encoder = __webpack_require__(712);
+	  base64encoder = __webpack_require__(486);
 	}
 
 	/**
@@ -5892,7 +5989,7 @@ webpackJsonp([0],{
 	 * Create a blob api even for blob builder when vendor prefixes exist
 	 */
 
-	var Blob = __webpack_require__(713);
+	var Blob = __webpack_require__(487);
 
 	/**
 	 * Encodes a packet.
@@ -6436,7 +6533,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 706:
+/***/ 481:
 /***/ function(module, exports) {
 
 	
@@ -6462,7 +6559,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 707:
+/***/ 482:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -6470,7 +6567,7 @@ webpackJsonp([0],{
 	 * Module requirements.
 	 */
 
-	var isArray = __webpack_require__(708);
+	var isArray = __webpack_require__(468);
 
 	/**
 	 * Module exports.
@@ -6529,17 +6626,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 708:
-/***/ function(module, exports) {
-
-	module.exports = Array.isArray || function (arr) {
-	  return Object.prototype.toString.call(arr) == '[object Array]';
-	};
-
-
-/***/ },
-
-/***/ 709:
+/***/ 483:
 /***/ function(module, exports) {
 
 	/**
@@ -6575,7 +6662,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 710:
+/***/ 484:
 /***/ function(module, exports) {
 
 	module.exports = after
@@ -6610,7 +6697,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 711:
+/***/ 485:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/wtf8 v1.0.0 by @mathias */
@@ -6850,7 +6937,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 712:
+/***/ 486:
 /***/ function(module, exports) {
 
 	/*
@@ -6924,7 +7011,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 713:
+/***/ 487:
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -7028,7 +7115,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 714:
+/***/ 488:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -7198,7 +7285,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 715:
+/***/ 489:
 /***/ function(module, exports) {
 
 	/**
@@ -7242,7 +7329,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 716:
+/***/ 490:
 /***/ function(module, exports) {
 
 	
@@ -7255,7 +7342,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 717:
+/***/ 491:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7330,399 +7417,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 718:
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {
-	/**
-	 * This is the web browser implementation of `debug()`.
-	 *
-	 * Expose `debug()` as the module.
-	 */
-
-	exports = module.exports = __webpack_require__(719);
-	exports.log = log;
-	exports.formatArgs = formatArgs;
-	exports.save = save;
-	exports.load = load;
-	exports.useColors = useColors;
-	exports.storage = 'undefined' != typeof chrome
-	               && 'undefined' != typeof chrome.storage
-	                  ? chrome.storage.local
-	                  : localstorage();
-
-	/**
-	 * Colors.
-	 */
-
-	exports.colors = [
-	  'lightseagreen',
-	  'forestgreen',
-	  'goldenrod',
-	  'dodgerblue',
-	  'darkorchid',
-	  'crimson'
-	];
-
-	/**
-	 * Currently only WebKit-based Web Inspectors, Firefox >= v31,
-	 * and the Firebug extension (any Firefox version) are known
-	 * to support "%c" CSS customizations.
-	 *
-	 * TODO: add a `localStorage` variable to explicitly enable/disable colors
-	 */
-
-	function useColors() {
-	  // is webkit? http://stackoverflow.com/a/16459606/376773
-	  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-	  return (typeof document !== 'undefined' && 'WebkitAppearance' in document.documentElement.style) ||
-	    // is firebug? http://stackoverflow.com/a/398120/376773
-	    (window.console && (console.firebug || (console.exception && console.table))) ||
-	    // is firefox >= v31?
-	    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-	    (navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31);
-	}
-
-	/**
-	 * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
-	 */
-
-	exports.formatters.j = function(v) {
-	  try {
-	    return JSON.stringify(v);
-	  } catch (err) {
-	    return '[UnexpectedJSONParseError]: ' + err.message;
-	  }
-	};
-
-
-	/**
-	 * Colorize log arguments if enabled.
-	 *
-	 * @api public
-	 */
-
-	function formatArgs() {
-	  var args = arguments;
-	  var useColors = this.useColors;
-
-	  args[0] = (useColors ? '%c' : '')
-	    + this.namespace
-	    + (useColors ? ' %c' : ' ')
-	    + args[0]
-	    + (useColors ? '%c ' : ' ')
-	    + '+' + exports.humanize(this.diff);
-
-	  if (!useColors) return args;
-
-	  var c = 'color: ' + this.color;
-	  args = [args[0], c, 'color: inherit'].concat(Array.prototype.slice.call(args, 1));
-
-	  // the final "%c" is somewhat tricky, because there could be other
-	  // arguments passed either before or after the %c, so we need to
-	  // figure out the correct index to insert the CSS into
-	  var index = 0;
-	  var lastC = 0;
-	  args[0].replace(/%[a-z%]/g, function(match) {
-	    if ('%%' === match) return;
-	    index++;
-	    if ('%c' === match) {
-	      // we only are interested in the *last* %c
-	      // (the user may have provided their own)
-	      lastC = index;
-	    }
-	  });
-
-	  args.splice(lastC, 0, c);
-	  return args;
-	}
-
-	/**
-	 * Invokes `console.log()` when available.
-	 * No-op when `console.log` is not a "function".
-	 *
-	 * @api public
-	 */
-
-	function log() {
-	  // this hackery is required for IE8/9, where
-	  // the `console.log` function doesn't have 'apply'
-	  return 'object' === typeof console
-	    && console.log
-	    && Function.prototype.apply.call(console.log, console, arguments);
-	}
-
-	/**
-	 * Save `namespaces`.
-	 *
-	 * @param {String} namespaces
-	 * @api private
-	 */
-
-	function save(namespaces) {
-	  try {
-	    if (null == namespaces) {
-	      exports.storage.removeItem('debug');
-	    } else {
-	      exports.storage.debug = namespaces;
-	    }
-	  } catch(e) {}
-	}
-
-	/**
-	 * Load `namespaces`.
-	 *
-	 * @return {String} returns the previously persisted debug modes
-	 * @api private
-	 */
-
-	function load() {
-	  var r;
-	  try {
-	    return exports.storage.debug;
-	  } catch(e) {}
-
-	  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-	  if (typeof process !== 'undefined' && 'env' in process) {
-	    return process.env.DEBUG;
-	  }
-	}
-
-	/**
-	 * Enable namespaces listed in `localStorage.debug` initially.
-	 */
-
-	exports.enable(load());
-
-	/**
-	 * Localstorage attempts to return the localstorage.
-	 *
-	 * This is necessary because safari throws
-	 * when a user disables cookies/localstorage
-	 * and you attempt to access it.
-	 *
-	 * @return {LocalStorage}
-	 * @api private
-	 */
-
-	function localstorage(){
-	  try {
-	    return window.localStorage;
-	  } catch (e) {}
-	}
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
-
-/***/ },
-
-/***/ 719:
-/***/ function(module, exports, __webpack_require__) {
-
-	
-	/**
-	 * This is the common logic for both the Node.js and web browser
-	 * implementations of `debug()`.
-	 *
-	 * Expose `debug()` as the module.
-	 */
-
-	exports = module.exports = debug.debug = debug;
-	exports.coerce = coerce;
-	exports.disable = disable;
-	exports.enable = enable;
-	exports.enabled = enabled;
-	exports.humanize = __webpack_require__(684);
-
-	/**
-	 * The currently active debug mode names, and names to skip.
-	 */
-
-	exports.names = [];
-	exports.skips = [];
-
-	/**
-	 * Map of special "%n" handling functions, for the debug "format" argument.
-	 *
-	 * Valid key names are a single, lowercased letter, i.e. "n".
-	 */
-
-	exports.formatters = {};
-
-	/**
-	 * Previously assigned color.
-	 */
-
-	var prevColor = 0;
-
-	/**
-	 * Previous log timestamp.
-	 */
-
-	var prevTime;
-
-	/**
-	 * Select a color.
-	 *
-	 * @return {Number}
-	 * @api private
-	 */
-
-	function selectColor() {
-	  return exports.colors[prevColor++ % exports.colors.length];
-	}
-
-	/**
-	 * Create a debugger with the given `namespace`.
-	 *
-	 * @param {String} namespace
-	 * @return {Function}
-	 * @api public
-	 */
-
-	function debug(namespace) {
-
-	  // define the `disabled` version
-	  function disabled() {
-	  }
-	  disabled.enabled = false;
-
-	  // define the `enabled` version
-	  function enabled() {
-
-	    var self = enabled;
-
-	    // set `diff` timestamp
-	    var curr = +new Date();
-	    var ms = curr - (prevTime || curr);
-	    self.diff = ms;
-	    self.prev = prevTime;
-	    self.curr = curr;
-	    prevTime = curr;
-
-	    // add the `color` if not set
-	    if (null == self.useColors) self.useColors = exports.useColors();
-	    if (null == self.color && self.useColors) self.color = selectColor();
-
-	    var args = new Array(arguments.length);
-	    for (var i = 0; i < args.length; i++) {
-	      args[i] = arguments[i];
-	    }
-
-	    args[0] = exports.coerce(args[0]);
-
-	    if ('string' !== typeof args[0]) {
-	      // anything else let's inspect with %o
-	      args = ['%o'].concat(args);
-	    }
-
-	    // apply any `formatters` transformations
-	    var index = 0;
-	    args[0] = args[0].replace(/%([a-z%])/g, function(match, format) {
-	      // if we encounter an escaped % then don't increase the array index
-	      if (match === '%%') return match;
-	      index++;
-	      var formatter = exports.formatters[format];
-	      if ('function' === typeof formatter) {
-	        var val = args[index];
-	        match = formatter.call(self, val);
-
-	        // now we need to remove `args[index]` since it's inlined in the `format`
-	        args.splice(index, 1);
-	        index--;
-	      }
-	      return match;
-	    });
-
-	    // apply env-specific formatting
-	    args = exports.formatArgs.apply(self, args);
-
-	    var logFn = enabled.log || exports.log || console.log.bind(console);
-	    logFn.apply(self, args);
-	  }
-	  enabled.enabled = true;
-
-	  var fn = exports.enabled(namespace) ? enabled : disabled;
-
-	  fn.namespace = namespace;
-
-	  return fn;
-	}
-
-	/**
-	 * Enables a debug mode by namespaces. This can include modes
-	 * separated by a colon and wildcards.
-	 *
-	 * @param {String} namespaces
-	 * @api public
-	 */
-
-	function enable(namespaces) {
-	  exports.save(namespaces);
-
-	  var split = (namespaces || '').split(/[\s,]+/);
-	  var len = split.length;
-
-	  for (var i = 0; i < len; i++) {
-	    if (!split[i]) continue; // ignore empty strings
-	    namespaces = split[i].replace(/[\\^$+?.()|[\]{}]/g, '\\$&').replace(/\*/g, '.*?');
-	    if (namespaces[0] === '-') {
-	      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-	    } else {
-	      exports.names.push(new RegExp('^' + namespaces + '$'));
-	    }
-	  }
-	}
-
-	/**
-	 * Disable debug output.
-	 *
-	 * @api public
-	 */
-
-	function disable() {
-	  exports.enable('');
-	}
-
-	/**
-	 * Returns true if the given mode name is enabled, false otherwise.
-	 *
-	 * @param {String} name
-	 * @return {Boolean}
-	 * @api public
-	 */
-
-	function enabled(name) {
-	  var i, len;
-	  for (i = 0, len = exports.skips.length; i < len; i++) {
-	    if (exports.skips[i].test(name)) {
-	      return false;
-	    }
-	  }
-	  for (i = 0, len = exports.names.length; i < len; i++) {
-	    if (exports.names[i].test(name)) {
-	      return true;
-	    }
-	  }
-	  return false;
-	}
-
-	/**
-	 * Coerce `val`.
-	 *
-	 * @param {Mixed} val
-	 * @return {Mixed}
-	 * @api private
-	 */
-
-	function coerce(val) {
-	  if (val instanceof Error) return val.stack || val.message;
-	  return val;
-	}
-
-
-/***/ },
-
-/***/ 720:
+/***/ 492:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -7730,8 +7425,8 @@ webpackJsonp([0],{
 	 * Module requirements.
 	 */
 
-	var Polling = __webpack_require__(703);
-	var inherit = __webpack_require__(716);
+	var Polling = __webpack_require__(478);
+	var inherit = __webpack_require__(490);
 
 	/**
 	 * Module exports.
@@ -7961,24 +7656,24 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 721:
+/***/ 493:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
 	 * Module dependencies.
 	 */
 
-	var Transport = __webpack_require__(704);
-	var parser = __webpack_require__(705);
-	var parseqs = __webpack_require__(715);
-	var inherit = __webpack_require__(716);
-	var yeast = __webpack_require__(717);
-	var debug = __webpack_require__(718)('engine.io-client:websocket');
+	var Transport = __webpack_require__(479);
+	var parser = __webpack_require__(480);
+	var parseqs = __webpack_require__(489);
+	var inherit = __webpack_require__(490);
+	var yeast = __webpack_require__(491);
+	var debug = __webpack_require__(457)('engine.io-client:websocket');
 	var BrowserWebSocket = global.WebSocket || global.MozWebSocket;
 	var NodeWebSocket;
 	if (typeof window === 'undefined') {
 	  try {
-	    NodeWebSocket = __webpack_require__(722);
+	    NodeWebSocket = __webpack_require__(494);
 	  } catch (e) { }
 	}
 
@@ -8254,14 +7949,14 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 722:
+/***/ 494:
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
 
-/***/ 723:
+/***/ 495:
 /***/ function(module, exports) {
 
 	
@@ -8277,7 +7972,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 724:
+/***/ 496:
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -8316,7 +8011,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 725:
+/***/ 497:
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -8324,13 +8019,13 @@ webpackJsonp([0],{
 	 * Module dependencies.
 	 */
 
-	var parser = __webpack_require__(685);
-	var Emitter = __webpack_require__(714);
-	var toArray = __webpack_require__(726);
-	var on = __webpack_require__(727);
-	var bind = __webpack_require__(728);
-	var debug = __webpack_require__(682)('socket.io-client:socket');
-	var hasBin = __webpack_require__(707);
+	var parser = __webpack_require__(460);
+	var Emitter = __webpack_require__(488);
+	var toArray = __webpack_require__(498);
+	var on = __webpack_require__(499);
+	var bind = __webpack_require__(500);
+	var debug = __webpack_require__(457)('socket.io-client:socket');
+	var hasBin = __webpack_require__(482);
 
 	/**
 	 * Module exports.
@@ -8742,7 +8437,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 726:
+/***/ 498:
 /***/ function(module, exports) {
 
 	module.exports = toArray
@@ -8762,7 +8457,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 727:
+/***/ 499:
 /***/ function(module, exports) {
 
 	
@@ -8793,7 +8488,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 728:
+/***/ 500:
 /***/ function(module, exports) {
 
 	/**
@@ -8823,7 +8518,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 729:
+/***/ 501:
 /***/ function(module, exports) {
 
 	

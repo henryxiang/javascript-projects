@@ -59,7 +59,7 @@ class TestApp extends React.Component {
     )
     socket.emit("messages::update",
       this.state.messageId,
-      {test: "hello, world"},
+      {text: "hello, world"},
       (error, data) => {}
     )
   }
