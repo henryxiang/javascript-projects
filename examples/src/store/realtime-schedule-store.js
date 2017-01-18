@@ -45,8 +45,6 @@ class RealTimeScheduleStore {
 
   @action addToCollection(data) {
     let schedule = new Schedule()
-    data.startTime = moment(data.startTime)
-    data.endTime = moment(data.endTime)
     schedule.copyFrom(data)
     //console.log("data: ", data)
     this.items.push(schedule)
@@ -55,8 +53,6 @@ class RealTimeScheduleStore {
   @action updateCollection(data) {
     let index = _.findIndex(this.items, {_id: data._id})
     if (index >= 0) {
-      data.startTime = moment(data.startTime)
-      data.endTime = moment(data.endTime)
       this.items[index].copyFrom(data)
     }
   }
@@ -66,8 +62,7 @@ class RealTimeScheduleStore {
   }
 
   @action add(schedule) {
-    const {startTime, endTime, description, freq} = schedule
-    this.socket.emit(this.msg.create, {startTime, endTime, description, freq})   
+    this.socket.emit(this.msg.create, schedule.dumpData())   
   }
 
   @action remove(schedule) {
@@ -75,7 +70,7 @@ class RealTimeScheduleStore {
   }
 
   @action update(schedule) {
-    this.socket.emit(this.msg.update, schedule._id, schedule)
+    this.socket.emit(this.msg.update, schedule._id, schedule.dumpData())
   }
 
   @action clear() {

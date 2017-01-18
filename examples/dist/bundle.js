@@ -6555,10 +6555,12 @@ webpackJsonp([0],[
 	    this.endPoint = endPoint;
 	    this.socket = (0, _socket2.default)(url);
 	    this.msg = {
+	      // Outgoing CRUD messages
 	      create: endPoint + '::create',
 	      update: endPoint + '::update',
 	      remove: endPoint + '::remove',
 	      find: endPoint + '::find',
+	      // Incoming event messages
 	      created: endPoint + ' created',
 	      updated: endPoint + ' updated',
 	      removed: endPoint + ' removed'
@@ -21280,7 +21282,7 @@ webpackJsonp([0],[
 
 	    // this._id = uniqueId()
 	    this.startTime = (0, _moment2.default)();
-	    this.endTime = (0, _moment2.default)();
+	    this.endTime = (0, _moment2.default)().add(1, 'h');
 	  } // String
 	  // Moment object
 
@@ -21291,11 +21293,21 @@ webpackJsonp([0],[
 	      return (0, _cloneDeep2.default)(this);
 	    }
 	  }, {
+	    key: 'dumpData',
+	    value: function dumpData() {
+	      return {
+	        startTime: this.startTime,
+	        endTime: this.endTime,
+	        description: this.description,
+	        freq: this.freq
+	      };
+	    }
+	  }, {
 	    key: 'copyFrom',
 	    value: function copyFrom(other) {
 	      this._id = other._id;
-	      this.startTime = other.startTime;
-	      this.endTime = other.endTime;
+	      this.startTime = (0, _moment2.default)(other.startTime);
+	      this.endTime = (0, _moment2.default)(other.endTime);
 	      this.description = other.description;
 	      this.freq = other.freq;
 	    }
@@ -22890,10 +22902,12 @@ webpackJsonp([0],[
 	    this.endPoint = endPoint;
 	    this.socket = (0, _socket2.default)(url);
 	    this.msg = {
+	      // Outgoing CRUD messages
 	      create: endPoint + '::create',
 	      update: endPoint + '::update',
 	      remove: endPoint + '::remove',
 	      find: endPoint + '::find',
+	      // Incoming event messages
 	      created: endPoint + ' created',
 	      updated: endPoint + ' updated',
 	      removed: endPoint + ' removed'
@@ -22925,8 +22939,6 @@ webpackJsonp([0],[
 	    key: 'addToCollection',
 	    value: function addToCollection(data) {
 	      var schedule = new _schedule2.default();
-	      data.startTime = (0, _moment2.default)(data.startTime);
-	      data.endTime = (0, _moment2.default)(data.endTime);
 	      schedule.copyFrom(data);
 	      //console.log("data: ", data)
 	      this.items.push(schedule);
@@ -22936,8 +22948,6 @@ webpackJsonp([0],[
 	    value: function updateCollection(data) {
 	      var index = _lodash2.default.findIndex(this.items, { _id: data._id });
 	      if (index >= 0) {
-	        data.startTime = (0, _moment2.default)(data.startTime);
-	        data.endTime = (0, _moment2.default)(data.endTime);
 	        this.items[index].copyFrom(data);
 	      }
 	    }
@@ -22951,12 +22961,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'add',
 	    value: function add(schedule) {
-	      var startTime = schedule.startTime,
-	          endTime = schedule.endTime,
-	          description = schedule.description,
-	          freq = schedule.freq;
-
-	      this.socket.emit(this.msg.create, { startTime: startTime, endTime: endTime, description: description, freq: freq });
+	      this.socket.emit(this.msg.create, schedule.dumpData());
 	    }
 	  }, {
 	    key: 'remove',
@@ -22966,7 +22971,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'update',
 	    value: function update(schedule) {
-	      this.socket.emit(this.msg.update, schedule._id, schedule);
+	      this.socket.emit(this.msg.update, schedule._id, schedule.dumpData());
 	    }
 	  }, {
 	    key: 'clear',

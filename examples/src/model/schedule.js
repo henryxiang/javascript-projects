@@ -21,15 +21,24 @@ class Schedule {
   constructor() {
     // this._id = uniqueId()
     this.startTime = moment()
-    this.endTime = moment()
+    this.endTime = moment().add(1, 'h')
   }
 
   clone() { return cloneDeep(this) }
 
+  dumpData() {
+    return {
+      startTime: this.startTime,
+      endTime: this.endTime,
+      description: this.description,
+      freq: this.freq
+    }
+  }
+
   @action copyFrom(other) {
     this._id = other._id
-    this.startTime = other.startTime
-    this.endTime = other.endTime
+    this.startTime = moment(other.startTime)
+    this.endTime = moment(other.endTime)
     this.description = other.description
     this.freq = other.freq
   }
