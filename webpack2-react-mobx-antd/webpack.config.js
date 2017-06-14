@@ -74,7 +74,10 @@ const config = {
       names: ['common', 'vendors'],
       filename: '[name]-[chunkhash].js'
     })
-  ]
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 };
 
 const doConfig = (env) => {
