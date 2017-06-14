@@ -1,1 +1,2 @@
-## JavaScript Projects Templates
+## JavaScript Project Templates
+
