@@ -2,44 +2,51 @@ const cas = require('passport-cas');
 const ssoBaseURL = 'https://cas.ucdavis.edu/cas';
 const serverBaseURL = 'http://localhost:3000/demo';
 
-module.exports = (passport) => {
-  const passportStrategy = new cas.Strategy(
-    { ssoBaseURL, serverBaseURL }, 
-    (login, done) => {
-      return done(null, { id: login.user, name: login.user })
-    }
-  );
+const passportStrategy = new cas.Strategy(
+  { ssoBaseURL, serverBaseURL }, 
+  (login, done) => {
+    return done(null, { id: login, name: login })
+  }
+);
 
-  passport.use(passportStrategy);
+module.exports = {
 
-  passport.serializeUser((user, done) => {
-    done(null, user);
-  });
+  configure: (passport) => {
+    passport.use(passportStrategy);
 
-  passport.deserializeUser((user, done) => {
-    done(null, user);
-  })
+    passport.serializeUser((user, done) => {
+      done(null, user.id);
+    });
 
-  return (req, res, next) => {
-    passport.authenticate('cas', function (err, user, info) {
-      if (err) {
-        // return next(err);
-        return res.status(401).send('Unauthorized');
-      }
-
-      if (!user) {
-        req.session.messages = info.message;
-        return res.status(401).send('Unauthorized');
-      }
-
-      req.logIn(user, function (err) {
+    passport.deserializeUser((id, done) => {
+      done(null, { id, name: id });
+    });
+  },
+  
+  authenticate: (passport) => {
+    return (req, res, next) => {
+      passport.authenticate('cas', function (err, user, info) {
         if (err) {
-          return next(err);
+          // return next(err);
+          return res.status(403).send('Access forbidden');
         }
 
-        req.session.messages = '';
-        return next();
-      });
-    })(req, res, next);
-  };
+        if (!user) {
+          req.session.messages = info.message;
+          return res.status(401).send('Unauthorized');
+        }
+
+        req.logIn(user, function (err) {
+          if (err) {
+            // return next(err);
+            return res.status(401).send('Unauthorized');          
+          }
+
+          req.session.messages = '';
+          return next();
+        });
+      })(req, res, next);
+    };
+  },
+  
 };
