@@ -14,9 +14,9 @@
     "lodash": "^4.17.2",
     "mobx": "^2.6.3",
     "mobx-react": "^3.5.9",
-    "react": "^15.4.0",
+    "react": "^15.6.0",
     "react-bootstrap": "^0.30.6",
-    "react-dom": "^15.4.0",
+    "react-dom": "^15.6.0",
     "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {

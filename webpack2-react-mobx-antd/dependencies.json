@@ -1,0 +1,42 @@
+{
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-jest": "*",
+    "babel-loader": "*",
+    "babel-plugin-transform-decorators-legacy": "*",
+    "babel-polyfill": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "css-loader": "*",
+    "enzyme": "*",
+    "extract-text-webpack-plugin": "*",
+    "file-loader": "*",
+    "html-webpack-plugin": "*",
+    "identity-obj-proxy": "*",
+    "jest": "*",
+    "json-server": "*",
+    "less-loader": "*",
+    "live-server": "*",
+    "npm-run-parallel": "*",
+    "react-addons-test-utils": "*",
+    "react-test-renderer": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
+    "url-loader": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "dependencies": {
+    "antd": "*",
+    "bootstrap": "*",
+    "enzyme-to-json": "*",
+    "font-awesome": "*",
+    "lodash": "*",
+    "mobx": "*",
+    "mobx-react": "*",
+    "react": "*",
+    "react-bootstrap": "*",
+    "react-dom": "*"
+  }
+}
