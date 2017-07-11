@@ -36,11 +36,11 @@ passport.use(new (require('passport-cas').Strategy)({
 }));
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser((id, done) => {
-  done(null, { id: id, name: id });
+passport.deserializeUser((user, done) => {
+  done(null, user);
 })
 
 const auth = function(req, res, next) {
@@ -51,7 +51,7 @@ const auth = function(req, res, next) {
 
     if (!user) {
       req.session.messages = info.message;
-      return res.redirect('/demo');
+      return res.status(401).send('Unauthorized');
     }
 
     req.logIn(user, function (err) {
@@ -60,7 +60,8 @@ const auth = function(req, res, next) {
       }
 
       req.session.messages = '';
-      return res.redirect('/demo');
+      // return res.redirect('/demo/index.html');
+      return next();
     });
   })(req, res, next);
 };
