@@ -14,7 +14,8 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "passport": "^0.3.2",
-    "passport-cas": "^0.1.1"
+    "passport-cas": "^0.1.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
