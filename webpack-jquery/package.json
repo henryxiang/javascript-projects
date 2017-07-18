@@ -1,0 +1,40 @@
+{
+  "name": "webpack-jquery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p --progress --env.prod",
+    "dev:server": "webpack-dev-server --env.prod=false",
+    "dev:api": "json-server --watch src/db.json",
+    "start": "npm-run-parallel dev:server dev:api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "css-loader": "^0.27.3",
+    "file-loader": "^0.11.2",
+    "sass-loader": "^6.0.5",
+    "url-loader": "^0.5.9",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "json-server": "^0.9.6",
+    "live-server": "^1.2.0",
+    "npm-run-parallel": "^0.5.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
