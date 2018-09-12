@@ -1,6 +1,8 @@
+const compare = (a, b) => a === b ? 0 : (a-b)/Math.abs(a-b);
+
 /**
  * Swap the array elements indexed by i and j
- * @param {number[]} data - input data
+ * @param {object[]} data - input data
  * @param {integer} i - index of first element
  * @param {integer} j - index of second element
  */
@@ -12,7 +14,7 @@ export function swap(data, i, j) {
 
 /**
  * Shuffle the data in an array
- * @param {number[]} data - input data
+ * @param {object[]} data - input data
  */
 export function shuffle(data) {
   for (let i = 0; i < data.length; i++) {
@@ -24,17 +26,21 @@ export function shuffle(data) {
 
 /**
  * Check if an array is sorted
- * @param {number[]} data - input data
+ * @param {object[]} data - input data
  * @param {boolean} inverse - data sorted in inverse order
+ * @param {function} comp - comparator function
  */
-export function isSorted(data, inverse) {
+export function isSorted(data, inverse, comp) {
+  if (!comp) {
+    comp = compare;
+  }
   if (data.length <= 1) {
     return true;
   }
   for (let i = 0; i < data.length; i++) {
-    if (!inverse && data[i+1] < data[i]) {
+    if (!inverse && comp(data[i+1], data[i]) < 0) {
       return false;
-    } else if (data[i+1] > data[i]) {
+    } else if (comp(data[i+1], data[i]) > 0) {
       return false;
     }
   }
@@ -43,7 +49,7 @@ export function isSorted(data, inverse) {
 
 /**
  * Reverse the order of an array in place
- * @param {number[]} data - input data
+ * @param {object[]} data - input data
  */
 export function reverse(data) {
   let i = 0;
@@ -55,15 +61,19 @@ export function reverse(data) {
 
 /**
  * Compare if two arrays have the same elements
- * @param {number[]} a 
- * @param {number[]} b 
+ * @param {object[]} a 
+ * @param {object[]} b
+ * @param {function} comp - comparator function
  */
-export function isEqual(a, b) {
+export function isEqual(a, b, comp) {
+  if (!comp) {
+    comp = compare;
+  }
   if (a.length !== b.length) {
     return false;
   }
   for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
+    if (comp(a[i], b[i]) !== 0) {
       return false;
     }
   }
@@ -72,11 +82,15 @@ export function isEqual(a, b) {
 
 /**
  * Find the index with minimum value in given range of an array
- * @param {number[]} data - input data
+ * @param {object[]} data - input data
  * @param {integer} from - from index
  * @param {integer} to - to index (exclusive)
+ * @param {function} comp - comparator function
  */
-export function findMinIndex(data, from, to) {
+export function findMinIndex(data, from, to, comp) {
+  if (!comp) {
+    comp = compare;
+  }
   if (!from) {
     from = 0;
   }
@@ -89,7 +103,7 @@ export function findMinIndex(data, from, to) {
   let min = data[from];
   let minIndex = from;
   for (let i = from; i < to; i++) {
-    if (data[i] < min) {
+    if (comp(data[i], min) < 0) {
       min = data[i];
       minIndex = i;
     }
@@ -99,11 +113,15 @@ export function findMinIndex(data, from, to) {
 
 /**
  * Find the index with maximum value in given range of an array
- * @param {number[]} data - input data
+ * @param {object[]} data - input data
  * @param {integer} from - from index
  * @param {integer} to - to index (exclusive)
+ * @param {function} comp - comparator function
  */
-export function findMaxIndex(data, from, to) {
+export function findMaxIndex(data, from, to, comp) {
+  if (!comp) {
+    comp = compare;
+  }
   if (!from) {
     from = 0;
   }
@@ -116,7 +134,7 @@ export function findMaxIndex(data, from, to) {
   let max = data[from];
   let maxIndex = from;
   for (let i = from; i < to; i++) {
-    if (data[i] > max) {
+    if (comp(data[i], max) > 0) {
       max = data[i];
       maxIndex = i;
     }

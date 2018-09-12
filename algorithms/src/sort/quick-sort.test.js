@@ -8,7 +8,7 @@ test('partition array', () => {
   expect(isEqual(c, b)).toBeTruthy;
 });
 
-test('sort array', () => {
+test('quick sort', () => {
   const n = 100;
   const a = [];
   for (let i = 1; i <= n; i++) {

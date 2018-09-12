@@ -1,11 +1,15 @@
 /**
  * Merge two sorted sub-arrays
- * @param {number[]} data 
+ * @param {object[]} data 
  * @param {integer} start 
  * @param {integer} end 
- * @param {integer} mid 
+ * @param {integer} mid
+ * @param {function} comp - comparator function
  */
-export function merge(data, start, end, mid) {
+export function merge(data, start, end, mid, comp) {
+  if (!comp) {
+    comp = (a, b) => a === b ? 0 : (a-b)/Math.abs(a-b)
+  }
   if (start > end) {
     return;
   }
@@ -13,18 +17,10 @@ export function merge(data, start, end, mid) {
   let i = 0;
   let j = mid - start + 1;
   for (let k = start; k <= end; k++) {
-    if (i > mid - start) {
-      data[k] = temp[j];
-      j++;
-    } else if (j > end - start) {
-      data[k] = temp[i];
-      i++;
-    } else if (temp[i] <= temp[j]) {
-      data[k] = temp[i];
-      i++;
+    if (j > end - start || comp(temp[i], temp[j]) <= 0) {
+      data[k] = temp[i++];
     } else {
-      data[k] = temp[j];
-      j++;
+      data[k] = temp[j++];
     }
   }
 }
@@ -32,8 +28,8 @@ export function merge(data, start, end, mid) {
 /**
  * Sort the array in between start and end (merge sort)
  * @param {number} data 
- * @param {integer = 0} start 
- * @param {integer = length - 1} end 
+ * @param {integer} [start=0] 
+ * @param {integer} [end=data.length-1] 
  */
 export function sort(data, start, end) {
   if (start === undefined) {

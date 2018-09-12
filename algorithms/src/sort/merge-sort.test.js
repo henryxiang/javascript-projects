@@ -16,7 +16,7 @@ test('merge two sorted arrays', () => {
   expect(isEqual(e, f)).toBeTruthy;
 });
 
-test('sort array', () => {
+test('merge sort', () => {
   const n = 100;
   const a = [];
   for (let i = 1; i <= n; i++) {
