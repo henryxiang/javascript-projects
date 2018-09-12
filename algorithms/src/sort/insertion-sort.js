@@ -1,4 +1,5 @@
 import { swap } from '../utils/array-util';
+
 /**
  * Sort an array in place
  * @param {object[]} data - input data

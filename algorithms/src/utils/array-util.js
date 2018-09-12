@@ -1,3 +1,8 @@
+/**
+ * Help function to compare two values
+ * @param {*} a 
+ * @param {*} b 
+ */
 const compare = (a, b) => a === b ? 0 : (a-b)/Math.abs(a-b);
 
 /**
