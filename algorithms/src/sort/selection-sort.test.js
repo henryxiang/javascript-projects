@@ -1,5 +1,5 @@
 import { sort } from './selection-sort';
-import { isSorted, shuffle } from '../array-utils';
+import { isSorted, shuffle } from '../utils/array-util';
 
 test('sort array', () => {
   const n = 100;

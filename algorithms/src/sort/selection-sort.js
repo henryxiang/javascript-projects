@@ -1,4 +1,4 @@
-import { findMinIndex, swap } from '../array-utils';
+import { findMinIndex, swap } from '../utils/array-util';
 /**
  * Sort the array in place (selection sort)
  * @param {number[]} data 

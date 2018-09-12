@@ -1,4 +1,4 @@
-import { shuffle, swap} from '../array-utils';
+import { shuffle, swap} from '../utils/array-util';
 
 export function partition(data, start, end) {
   const pivot = data[start];

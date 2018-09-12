@@ -1,4 +1,4 @@
-import { swap } from '../array-utils';
+import { swap } from '../utils/array-util';
 /**
  * Sort an array in place
  * @param {number[]} data - input data

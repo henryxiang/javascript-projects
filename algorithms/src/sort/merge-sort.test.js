@@ -1,5 +1,5 @@
 import { merge, sort } from './merge-sort';
-import { isEqual, isSorted, shuffle } from '../array-utils';
+import { isEqual, isSorted, shuffle } from '../utils/array-util';
 
 test('merge two sorted arrays', () => {
   const a = [1, 3, 5, 7, 2, 4, 6];
