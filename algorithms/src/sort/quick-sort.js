@@ -1,16 +1,5 @@
 import { shuffle, swap} from '../utils/array-util';
 
-<<<<<<< HEAD
-/** @module */
-
-/**
- * 
- * @param {number[]} data 
- * @param {integer} start 
- * @param {integer} end 
- */
-export function partition(data, start, end) {
-=======
 /**
  * 
  * @param {object[]} data 
@@ -22,7 +11,6 @@ export function partition(data, start, end, comp) {
   if (!comp) {
     comp = (a, b) => a === b ? 0 : (a-b)/Math.abs(a-b);
   }
->>>>>>> dcad6ebaf2d7eac39a0ac6d004b7869743d5c42c
   const pivot = data[start];
   let i = start;
   let lo = start;

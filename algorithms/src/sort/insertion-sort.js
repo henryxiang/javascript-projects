@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import { swap } from '../array-utils';
-
-/** @module */
-=======
 import { swap } from '../utils/array-util';
->>>>>>> dcad6ebaf2d7eac39a0ac6d004b7869743d5c42c
 
 /**
  * Sort an array in place
