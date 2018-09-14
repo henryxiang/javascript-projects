@@ -148,3 +148,17 @@ export function findMaxIndex(data, from, to, comp) {
   }
   return maxIndex;
 }
+
+/**
+ * 
+ * @param {integer} size - number of elements
+ * @param {integer} min
+ * @param {integer} max
+ */
+export function randomArray(size, min, max) {
+  const results = [];
+  for (let i = 0; i < size; i++) {
+    results.push(Math.floor(min + Math.random()*(max-min+1)));
+  }
+  return results;
+}

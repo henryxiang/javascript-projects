@@ -1,7 +1,8 @@
 import { 
   findMaxIndex, findMinIndex,
   isEqual, isSorted,
-  reverse, shuffle, swap
+  reverse, shuffle, swap,
+  randomArray,
 } from './array-util';
 
 test('swap array data', () => {
@@ -60,4 +61,16 @@ test('find min index', () => {
   expect(findMinIndex(a, 1)).toBe(3);
   expect(findMinIndex(a, 2, 5)).toBe(3);
   expect(findMinIndex(a, 2, 2)).toBe(-1);
+});
+
+test('generate random array', () => {
+  const size = 200;
+  const min = 10;
+  const max = 20;
+  const a = randomArray(size, min, max);
+  const minIndex = findMinIndex(a);
+  const maxIndex = findMaxIndex(a);
+  expect(a.length).toBe(size);
+  expect(a[minIndex]).toBeGreaterThanOrEqual(min);
+  expect(a[maxIndex]).toBeLessThanOrEqual(max);
 });
