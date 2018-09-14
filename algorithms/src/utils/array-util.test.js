@@ -2,7 +2,7 @@ import {
   findMaxIndex, findMinIndex,
   isEqual, isSorted,
   reverse, shuffle, swap
-} from './index';
+} from './array-util';
 
 test('swap array data', () => {
   const a = [1, 2, 3, 4];

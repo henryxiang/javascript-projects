@@ -1,7 +1,7 @@
 import { sort } from './insertion-sort';
-import { isSorted, shuffle } from '../array-utils';
+import { isSorted, shuffle } from '../utils/array-util';
 
-test('sort array', () => {
+test('insertion sort', () => {
   const n = 100;
   const a = [];
   for (let i = 1; i <= n; i++) {

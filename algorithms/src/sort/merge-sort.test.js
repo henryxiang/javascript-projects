@@ -1,5 +1,5 @@
 import { merge, sort } from './merge-sort';
-import { isEqual, isSorted, shuffle } from '../array-utils';
+import { isEqual, isSorted, shuffle } from '../utils/array-util';
 
 test('merge two sorted arrays', () => {
   const a = [1, 3, 5, 7, 2, 4, 6];
@@ -16,7 +16,7 @@ test('merge two sorted arrays', () => {
   expect(isEqual(e, f)).toBeTruthy;
 });
 
-test('sort array', () => {
+test('merge sort', () => {
   const n = 100;
   const a = [];
   for (let i = 1; i <= n; i++) {

@@ -1,5 +1,6 @@
-import { shuffle, swap} from '../array-utils';
+import { shuffle, swap} from '../utils/array-util';
 
+<<<<<<< HEAD
 /** @module */
 
 /**
@@ -9,20 +10,30 @@ import { shuffle, swap} from '../array-utils';
  * @param {integer} end 
  */
 export function partition(data, start, end) {
+=======
+/**
+ * 
+ * @param {object[]} data 
+ * @param {integer} start 
+ * @param {integer} end 
+ * @param {function} comp - comparator function
+ */
+export function partition(data, start, end, comp) {
+  if (!comp) {
+    comp = (a, b) => a === b ? 0 : (a-b)/Math.abs(a-b);
+  }
+>>>>>>> dcad6ebaf2d7eac39a0ac6d004b7869743d5c42c
   const pivot = data[start];
   let i = start;
   let lo = start;
   let hi = end;
   while (i <= hi) {
-    if (data[i] === pivot) {
+    if (comp(data[i], pivot) === 0) {
       i += 1;
-    } else if (data[i] < pivot) {
-      swap(data, i, lo);
-      i += 1;
-      lo += 1;
+    } else if (comp(data[i], pivot) < 0){
+      swap(data, i++, lo++);
     } else {
-      swap(data, i, hi);
-      hi -= 1;
+      swap(data, i, hi--);
     }
   }
   return [lo, hi];
@@ -30,9 +41,15 @@ export function partition(data, start, end) {
 
 /**
  * 
+<<<<<<< HEAD
  * @param {number[]} data 
  * @param {integer} [start=0]
  * @param {integer} [end=data.length-1] 
+=======
+ * @param {object[]} data 
+ * @param {integer} [start=0] start 
+ * @param {integer} [end=0] 
+>>>>>>> dcad6ebaf2d7eac39a0ac6d004b7869743d5c42c
  */
 export function sort(data, start, end) {
   if (start === undefined) {

@@ -1,5 +1,5 @@
 import { partition, sort } from './quick-sort';
-import { isEqual, isSorted, shuffle } from '../array-utils';
+import { isEqual, isSorted, shuffle } from '../utils/array-util';
 
 test('partition array', () => {
   const a = [5, 1, 6, 2, 4, 7, 9, 3, 8];
@@ -8,7 +8,7 @@ test('partition array', () => {
   expect(isEqual(c, b)).toBeTruthy;
 });
 
-test('sort array', () => {
+test('quick sort', () => {
   const n = 100;
   const a = [];
   for (let i = 1; i <= n; i++) {
