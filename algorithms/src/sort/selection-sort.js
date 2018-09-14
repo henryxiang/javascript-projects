@@ -1,4 +1,7 @@
 import { findMinIndex, swap } from '../array-utils';
+
+/** @module */
+
 /**
  * Sort the array in place (selection sort)
  * @param {number[]} data 

@@ -1,3 +1,5 @@
+/** @module array-utils */
+
 /**
  * Swap the array elements indexed by i and j
  * @param {number[]} data - input data

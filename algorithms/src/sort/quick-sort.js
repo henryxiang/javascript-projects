@@ -1,5 +1,13 @@
 import { shuffle, swap} from '../array-utils';
 
+/** @module */
+
+/**
+ * 
+ * @param {number[]} data 
+ * @param {integer} start 
+ * @param {integer} end 
+ */
 export function partition(data, start, end) {
   const pivot = data[start];
   let i = start;
@@ -20,6 +28,12 @@ export function partition(data, start, end) {
   return [lo, hi];
 }
 
+/**
+ * 
+ * @param {number[]} data 
+ * @param {integer} [start=0]
+ * @param {integer} [end=data.length-1] 
+ */
 export function sort(data, start, end) {
   if (start === undefined) {
     shuffle(data);

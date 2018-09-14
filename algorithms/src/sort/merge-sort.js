@@ -1,3 +1,5 @@
+/** @module */
+
 /**
  * Merge two sorted sub-arrays
  * @param {number[]} data 
@@ -32,8 +34,8 @@ export function merge(data, start, end, mid) {
 /**
  * Sort the array in between start and end (merge sort)
  * @param {number} data 
- * @param {integer = 0} start 
- * @param {integer = length - 1} end 
+ * @param {integer} [start=0] 
+ * @param {integer} [end=data.length-1] 
  */
 export function sort(data, start, end) {
   if (start === undefined) {

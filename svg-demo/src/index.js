@@ -1,19 +1,29 @@
-import greet from './dummy';
 import SVG from 'svg.js';
+import anime from 'animejs';
 
-const app = document.querySelector('#app');
-app.innerHTML = greet('World');
+const svg = SVG('svg').size(600, 400);
 
-const svg = SVG('svg').size(400, 400);
-const rect = svg.rect(100, 100).attr({ fill: '#f06' }).dmove(50, 50);
+svg.text('Hello World!').id('myText').font({ size: 0, fill: 'blue' });
 
-rect
-  .animate({ ease: '<>', delay: '0.5s' })
-  // .dmove(0, 200)
-  .rotate(360)
-  .move(50, 250);
-  
-rect
-  .animate({ ease: '<>', delay: '0.5s' })
-  // .dmove(0, -200)
-  .rotate(-360);
+svg.circle()
+  .id('myCircle')
+  .fill('none')
+  .stroke({ width: 2, color: '#f06' })
+  .move(230, 185);
+
+anime.timeline()
+  .add({
+    targets: '#myText',
+    translateX: 100,
+    translateY: 200,
+    fontSize: 48,
+    duration: 2000,
+    easing: 'linear',
+    rotate: '1turn',
+  })
+  .add({
+    targets: '#myCircle',
+    duration: 2000,
+    easing: 'linear',
+    r: 150,
+  });
