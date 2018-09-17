@@ -5,7 +5,13 @@ $(() => {
 
   $('#app').append(info, loc, btn);
 
-  btn.click(() => info.text('You clicked me.').show());
+  btn.click((e) => {
+    if ($(e.currentTarget).text() === 'Click Me') {
+      $(e.currentTarget).text('Thank You');
+    } else {
+      $(e.currentTarget).text('Click Me');
+    }
+  });
 
   info.click(() => info.hide());
 
