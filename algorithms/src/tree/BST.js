@@ -27,24 +27,25 @@ export default class BST {
     if (root === null) {
       return 0;
     }
-    if (root.size === null) {
-      root.size = this.size(root.left) + this.size(root.right) + 1;
-    }
-    return root.size;
+    return this.size(root.left) + this.size(root.right) + 1;
   }
 
   height(root) {
     if (root === undefined) {
-      return this.size(this.root);
+      return this.height(this.root);
     }
     if (root === null) {
       return -1;
     }
-    if (root.height === null) {
-      root.height = Math.max(this.height(root.left), this.height(root.right)) + 1;
-    }
-    return root.height;
+    return Math.max(this.height(root.left), this.height(root.right)) + 1;
   }
+
+  getAllNodes() {
+    const results = [];
+    this._inOrderTraverse(this.root, results);
+    return results;
+  }
+
   /**
    * 
    * @param {object} key 
@@ -90,7 +91,9 @@ export default class BST {
    */
   put(key, value, root) {
     if (root === undefined) {
+      // root = this.root;
       this.root = this.put(key, value, this.root);
+      // this._adjustTreeHeightAndSize(this.root);
       return;
     }
     if (root === null) {
@@ -124,9 +127,9 @@ export default class BST {
     }
     const cmp = this.compare(key, root.key);
     if (cmp < 0) {
-      this.left = this.delete(key, root.left);
+      root.left = this.delete(key, root.left);
     } else if (cmp > 0) {
-      this.right = this.delete(key, root.right);
+      root.right = this.delete(key, root.right);
     } else {
       let node;
       if (root.left === null) {
@@ -139,8 +142,7 @@ export default class BST {
         node.left = root.left;
         node.right = root.right;
       }
-      this._adjustTreeHeightAndSize(node)
-      return node;
+      root = node;
     }
     this._adjustTreeHeightAndSize(root);
     return root;
@@ -192,5 +194,14 @@ export default class BST {
   _adjustTreeHeightAndSize(root) {
     root.height = this.height(root)
     root.size = this.size(root)
+  }
+
+  _inOrderTraverse(root, results) {
+    if (root === null) {
+      return;
+    }
+    this._inOrderTraverse(root.left, results);
+    results.push(root);
+    this._inOrderTraverse(root.right, results);
   }
 }
