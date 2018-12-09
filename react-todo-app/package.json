@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-plugin-styled-components": "^1.8.0",
+    "mobx": "^5.5.2",
+    "mobx-react": "^5.3.5",
     "react": "^16.4.1",
+    "react-app-rewire-mobx": "^1.0.9",
+    "react-app-rewired": "^1.6.2",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
     "todomvc-app-css": "^2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject"
   }
 }
