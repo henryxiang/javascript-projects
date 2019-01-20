@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import 'typeface-roboto';
 import './App.css';
+import 'moment';
+import NavBar from './components/NavBar';
+import { MuiPickersUtilsProvider, DatePicker } from 'material-ui-pickers';
+import MomentUtils from '@date-io/moment';
 
 class App extends Component {
+  state = {
+    selectedDate: new Date()
+  }
+
+  onDateChange = date => {this.setState({ selectedDate: date })}
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <NavBar></NavBar>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <DatePicker
+            margin="normal"
+            label="Date picker"
+            value={this.state.selectedDate}
+            onChange={this.onDateChange}
+          />
+        </MuiPickersUtilsProvider>
       </div>
     );
   }
