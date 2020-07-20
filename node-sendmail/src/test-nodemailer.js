@@ -10,8 +10,9 @@ async function main(){
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: "smtp.ucdavis.edu",
-    port: 25,
-    secure: false, // true for 465, false for other ports
+    // port: 25,
+    port: 587,
+    secure: false,
     auth: null,
     // auth: {
     //   user: testAccount.user, // generated ethereal user
